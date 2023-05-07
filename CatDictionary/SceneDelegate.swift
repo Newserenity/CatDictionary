@@ -13,20 +13,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        // MARK: No 스토리보드 세팅
+
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        // 처음보일 view controller
+//        let viewController = MainViewController()
+//        // 위 VC를 첫 화면으로 띄우기
+//        window?.rootViewController = viewController
+//        // 화면에 보이게끔 하기
+//        window?.makeKeyAndVisible()
+//        window?.windowScene = windowScene
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: UIScreen.main.bounds)
-        // 처음보일 view controller
-        let viewController = ScrollViewTest()
-        // 위 VC를 첫 화면으로 띄우기
-        window?.rootViewController = viewController
-        // 화면에 보이게끔 하기
+
+        window = UIWindow(windowScene: windowScene)
+
+        // 탭바컨트롤러의 생성
+        let tabBarController = UITabBarController()
+
+        // 첫번째 화면은 네비게이션컨트롤러로 만들기 (기본루트뷰 설정)
+        let mainViewController = UINavigationController(rootViewController: MainViewController())
+        let uploadViewController = UINavigationController(rootViewController: UploadViewController())
+        let myUploadListViewController = UINavigationController(rootViewController: MyUploadListViewController())
+        let starListViewController = UINavigationController(rootViewController: StarListViewController())
+
+        // 탭바 이름들 설정
+        mainViewController.title = "Main"
+        uploadViewController.title = "Upload"
+        myUploadListViewController.title = "MyList"
+        starListViewController.title = "Star"
+
+        // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
+        tabBarController.setViewControllers([
+            mainViewController,
+            uploadViewController,
+            myUploadListViewController,
+            starListViewController
+        ], animated: false)
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.tabBar.backgroundColor = .white
+
+        // 탭바 이미지 설정 (이미지는 애플이 제공하는 것으로 사용)
+        guard let items = tabBarController.tabBar.items else { return }
+        items[0].image = UIImage(systemName: "house.fill")
+        items[1].image = UIImage(systemName: "camera.fill")
+        items[2].image = UIImage(systemName: "checklist.unchecked")
+        items[3].image = UIImage(systemName: "star.fill")
+
+        // 기본루트뷰를 탭바컨트롤러로 설정
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-        window?.windowScene = windowScene
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
