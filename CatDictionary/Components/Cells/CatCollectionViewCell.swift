@@ -12,12 +12,14 @@ import Then
 final class CatCollectionViewCell: UICollectionViewCell {
     static let identifier = "CatCollectionViewCell"
     
-    fileprivate lazy var imageView = UIImageView().then {
+    var imageView = UIImageView().then {
         $0.clipsToBounds = true
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemGray5
+        
         
         addSubViewConfig()
         autolayoutConfig()

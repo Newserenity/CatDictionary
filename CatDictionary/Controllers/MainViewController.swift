@@ -10,13 +10,21 @@ import SnapKit
 import Then
 
 class MainViewController: UIViewController {
-    let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", ]
+    let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
     
-    var collectionView = UICollectionView(frame: .zero)
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then {
+        $0.backgroundColor = .systemGray4
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        delegateConfig()
+        
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: view.frame.width/3 - 15, height: view.frame.width/3 - 15)
+        collectionView.collectionViewLayout = flowLayout
         
         uiConfig()
         addSubViewConfig()
@@ -47,6 +55,7 @@ extension MainViewController {
     fileprivate func delegateConfig() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "catCollectionViewCell")
         
     }
 }
@@ -61,10 +70,14 @@ extension MainViewController {
 // MARK: - AutoLayout setting
 extension MainViewController {
     fileprivate func autolayoutConfig() {
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        collectionView.snp.makeConstraints {            
+            $0.left.equalToSuperview().offset(10)
+            $0.right.equalToSuperview().offset(-10)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
+            
+            // 내부 컨텐츠의 크기에 맞게 리팩토링 해야함
+            $0.height.equalTo(view.frame.width * 2/3)
         }
-   
     }
 }
 
@@ -85,7 +98,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catCollectionViewCell", for: indexPath) as! CatCollectionViewCell
+        
+        cell.imageView.image = UIImage(systemName: "tray.full.fill")
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function, "path : \(indexPath)")
     }
 }
 
