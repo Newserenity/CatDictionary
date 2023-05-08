@@ -56,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // 탭바 이미지 설정 (이미지는 애플이 제공하는 것으로 사용)
         guard let items = tabBarController.tabBar.items else { return }
-        items[0].image = UIImage(systemName: "house.fill")
+        items[0].image = UIImage(systemName: "magnifyingglass")
         items[1].image = UIImage(systemName: "camera.fill")
         items[2].image = UIImage(systemName: "checklist.unchecked")
         items[3].image = UIImage(systemName: "star.fill")

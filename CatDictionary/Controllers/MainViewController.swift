@@ -9,12 +9,14 @@ import UIKit
 import SnapKit
 import Then
 
-class MainViewController: UIViewController {
-    let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
+final class MainViewController: UIViewController {
+    fileprivate let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
     
-    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then {
+    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then {
         $0.backgroundColor = .systemGray4
     }
+    
+    fileprivate lazy var searchBar = SearchBarView.generateSearchBarView()
 
 
     override func viewDidLoad() {
@@ -29,8 +31,19 @@ class MainViewController: UIViewController {
         uiConfig()
         addSubViewConfig()
         autolayoutConfig()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // navbar hide
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // navbar hide
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+    } 
 }
 
 // MARK: - Self UI setting
@@ -46,7 +59,7 @@ extension MainViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        title = "Main"
+        title = "Explore"
     }
 }
 
@@ -55,6 +68,8 @@ extension MainViewController {
     fileprivate func delegateConfig() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        // regist Cell
         collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "catCollectionViewCell")
         
     }
@@ -63,21 +78,28 @@ extension MainViewController {
 // MARK: - AddSubview setting
 extension MainViewController {
     fileprivate func addSubViewConfig() {
-        view.addSubview(collectionView)
+        view.addSubview(searchBar)
+//        view.addSubview(collectionView)
     }
 }
 
 // MARK: - AutoLayout setting
 extension MainViewController {
     fileprivate func autolayoutConfig() {
-        collectionView.snp.makeConstraints {            
-            $0.left.equalToSuperview().offset(10)
-            $0.right.equalToSuperview().offset(-10)
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
-            
-            // 내부 컨텐츠의 크기에 맞게 리팩토링 해야함
-            $0.height.equalTo(view.frame.width * 2/3)
-        }
+//        collectionView.snp.makeConstraints {
+//            $0.left.equalToSuperview().offset(10)
+//            $0.right.equalToSuperview().offset(-10)
+//            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+//
+//            // 내부 컨텐츠의 크기에 맞게 리팩토링 해야함
+//            $0.height.equalTo(view.frame.width * 2/3)
+//        }
+//        searchBar.snp.makeConstraints {
+//            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+//            $0.horizontalEdges.equalToSuperview()
+//        }
+        
+        
     }
 }
 
