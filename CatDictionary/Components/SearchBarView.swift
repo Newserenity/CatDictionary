@@ -36,9 +36,8 @@ final class SearchBarView: UIView {
     }
     
     fileprivate lazy var searchBarTextFiled = UITextField().then {
-        $0.placeholder = "キーワードで検索"
+        $0.placeholder = "키워드로 검색하기" //キーワードで検索
         $0.font = .systemFont(ofSize: 14)
-        $0.backgroundColor = .systemGray5
         UITextField.appearance().tintColor = .black
     }
     
@@ -54,25 +53,19 @@ final class SearchBarView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
-    
-    private func configDelegate() {
-        searchBarTextFiled.delegate = self
-    }
-    
-    private func setupUI() {
-        self.backgroundColor = .systemTeal
-    }
-    
-    private func autolayout() {
-        
-    }
 }
 
 // MARK: - Self UI setting
 extension SearchBarView {
     fileprivate func configUI() {
-        
+
+    }
+}
+
+// MARK: - Delegate setting
+extension SearchBarView {
+    fileprivate func configDelegate() {
+        searchBarTextFiled.delegate = self
     }
 }
 
@@ -88,12 +81,25 @@ extension SearchBarView {
 // MARK: - AutoLayout setting
 extension SearchBarView {
     fileprivate func configAutolayout() {
+        topSearchBar.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.left.equalToSuperview().offset(15)
+            $0.height.equalTo(55)
+        }
         
+        searchImageView.snp.makeConstraints {
+            $0.size.equalTo(20)
+            $0.left.equalTo(topSearchBar.snp.left).offset(20)
+        }
+        
+        searchBarTextFiled.snp.makeConstraints {
+            $0.right.equalTo(topSearchBar.snp.right).offset(100)
+        }
         
     }
 }
 
-// MARK: - Delegate setting
+// MARK: - UITextFieldDelegate Extension
 extension SearchBarView: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.searchBarTextFiled.resignFirstResponder()

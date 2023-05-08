@@ -49,7 +49,7 @@ final class MainViewController: UIViewController {
 // MARK: - Self UI setting
 extension MainViewController {
     fileprivate func uiConfig() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .white
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -79,25 +79,26 @@ extension MainViewController {
 extension MainViewController {
     fileprivate func addSubViewConfig() {
         view.addSubview(searchBar)
-//        view.addSubview(collectionView)
+        view.addSubview(collectionView)
     }
 }
 
 // MARK: - AutoLayout setting
 extension MainViewController {
     fileprivate func autolayoutConfig() {
-//        collectionView.snp.makeConstraints {
-//            $0.left.equalToSuperview().offset(10)
-//            $0.right.equalToSuperview().offset(-10)
-//            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-//
-//            // 내부 컨텐츠의 크기에 맞게 리팩토링 해야함
-//            $0.height.equalTo(view.frame.width * 2/3)
-//        }
-//        searchBar.snp.makeConstraints {
-//            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-//            $0.horizontalEdges.equalToSuperview()
-//        }
+        collectionView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(10)
+            $0.right.equalToSuperview().offset(-10)
+            $0.top.equalTo(searchBar.snp.bottom).offset(20)
+
+            // 내부 컨텐츠의 크기에 맞게 리팩토링 해야함
+            $0.height.equalTo(view.frame.width * 2/3)
+        }
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.height.equalTo(55)
+            $0.horizontalEdges.equalToSuperview()
+        }
         
         
     }

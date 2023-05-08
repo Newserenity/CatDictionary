@@ -53,6 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ], animated: false)
         tabBarController.modalPresentationStyle = .fullScreen
         tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.tintColor = .systemTeal
+        
+        tabBarController.tabBar.layer.borderWidth = 0.3
+        tabBarController.tabBar.layer.borderColor = UIColor.lightGray.cgColor
 
         // 탭바 이미지 설정 (이미지는 애플이 제공하는 것으로 사용)
         guard let items = tabBarController.tabBar.items else { return }
