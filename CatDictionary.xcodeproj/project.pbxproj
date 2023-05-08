@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DB0C9E72A08B37E00A234A0 /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9E62A08B37E00A234A0 /* CatCollectionViewCell.swift */; };
 		3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768012A07B364009AFB08 /* AppDelegate.swift */; };
 		3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768032A07B364009AFB08 /* SceneDelegate.swift */; };
 		3DB768062A07B364009AFB08 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768052A07B364009AFB08 /* MainViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3DB0C9E62A08B37E00A234A0 /* CatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB767FE2A07B364009AFB08 /* CatDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB768012A07B364009AFB08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DB768032A07B364009AFB08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DB0C9E52A088A6300A234A0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3DB0C9E62A08B37E00A234A0 /* CatCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		3DB767F52A07B364009AFB08 = {
 			isa = PBXGroup;
 			children = (
@@ -161,10 +171,6 @@
 		3DB768392A07B808009AFB08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3DB768052A07B364009AFB08 /* MainViewController.swift */,
-				3DB768482A07C1E8009AFB08 /* UploadViewController.swift */,
-				3DB7684B2A07C233009AFB08 /* MyUploadListViewController.swift */,
-				3DB7684D2A07C248009AFB08 /* StarListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +185,10 @@
 		3DB7683B2A07B822009AFB08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3DB768052A07B364009AFB08 /* MainViewController.swift */,
+				3DB7684B2A07C233009AFB08 /* MyUploadListViewController.swift */,
+				3DB768482A07C1E8009AFB08 /* UploadViewController.swift */,
+				3DB7684D2A07C248009AFB08 /* StarListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 		3DB7683C2A07B84E009AFB08 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3DB0C9E52A088A6300A234A0 /* Cells */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,6 +360,7 @@
 				3DB768492A07C1E8009AFB08 /* UploadViewController.swift in Sources */,
 				3DB7684C2A07C233009AFB08 /* MyUploadListViewController.swift in Sources */,
 				3DB768062A07B364009AFB08 /* MainViewController.swift in Sources */,
+				3DB0C9E72A08B37E00A234A0 /* CatCollectionViewCell.swift in Sources */,
 				3DB768382A07B49E009AFB08 /* UIView+Ext.swift in Sources */,
 				3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */,
 				3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */,

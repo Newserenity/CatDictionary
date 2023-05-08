@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UploadViewController.swift
 //  CatDictionary
 //
 //  Created by Jayden Jang on 2023/05/07.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class UploadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController {
+extension UploadViewController {
     fileprivate func uiConfig() {
         view.backgroundColor = .systemGray6
         
@@ -31,7 +31,21 @@ extension MainViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        title = "Main"
+        title = "Upload"
     }
 }
 
+// MARK: - Preview 관련
+#if DEBUG
+
+import SwiftUI
+
+struct UploadViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadViewController()
+            .getPreview()
+            .ignoresSafeArea()
+    }
+}
+
+#endif

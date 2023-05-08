@@ -1,5 +1,5 @@
 //
-//  StarListViewController.swift
+//  MyUploadListViewController.swift
 //  CatDictionary
 //
 //  Created by Jayden Jang on 2023/05/07.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarListViewController: UIViewController {
+class MyUploadListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class StarListViewController: UIViewController {
 
 }
 
-extension StarListViewController {
+extension MyUploadListViewController {
     fileprivate func uiConfig() {
         view.backgroundColor = .systemGray6
         
@@ -31,6 +31,22 @@ extension StarListViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        title = "Star"
+        title = "MyList"
     }
 }
+
+// MARK: - Preview 관련
+#if DEBUG
+
+import SwiftUI
+
+struct MyUploadListViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        MyUploadListViewController()
+            .getPreview()
+            .ignoresSafeArea()
+    }
+}
+
+#endif
+
