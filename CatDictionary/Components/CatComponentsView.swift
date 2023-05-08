@@ -19,9 +19,7 @@ final class CatComponentsView: UIView {
     
     fileprivate let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
     
-    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then {
-        $0.backgroundColor = .white
-    }
+    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +36,7 @@ final class CatComponentsView: UIView {
     
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 10, height: self.frame.width/3 - 10)
+        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
         collectionView.collectionViewLayout = flowLayout
     }
 }

@@ -29,7 +29,7 @@ final class MainViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         
-        print(catList.frame.width)
+        print(view.frame.size)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,7 +86,9 @@ extension MainViewController {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(searchBar.snp.bottom).offset(10)
             $0.width.equalToSuperview().inset(10)
-            $0.height.equalTo(600)
+            
+            // 부모 뷰크기가아니라 본인의 뷰크기로 리팩토링하는 방법 찾기
+            $0.height.equalTo(view.frame.width * 3/4)
         }
     }
 }
