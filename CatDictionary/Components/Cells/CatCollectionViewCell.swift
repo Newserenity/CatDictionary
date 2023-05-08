@@ -19,6 +19,7 @@ final class CatCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemGray5
+        self.layer.cornerRadius = 10
         
         
         addSubViewConfig()
