@@ -13,7 +13,7 @@ final class CatComponentsView: UIView {
     
     // Elements
     fileprivate lazy var subtitle = UILabel().then {
-        $0.text = "떼껄룩 모음"
+        $0.text = "T'ekaaluk"
         $0.font = UIFont.systemFont(ofSize: 25, weight: .bold)
     }
     
@@ -95,7 +95,7 @@ extension CatComponentsView: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catCollectionViewCell", for: indexPath) as! CatCollectionViewCell
 
-        cell.imageView.image = UIImage(systemName: "tray.full.fill")
+        cell.imageView.image = UIImage(systemName: "person.fill")
         
         return cell
     }

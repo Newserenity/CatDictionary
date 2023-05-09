@@ -6,18 +6,28 @@
 //
 
 import UIKit
+import PhotosUI
+import Then
 
 class MyUploadListViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        config.selection = .ordered
+        config.selectionLimit = 0
+        
+        let picker = PHPickerViewController(configuration: config)
+        
         uiConfig()
+
     }
-
-
 }
+
 
 extension MyUploadListViewController {
     fileprivate func uiConfig() {
@@ -30,6 +40,7 @@ extension MyUploadListViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         title = "MyList"
     }

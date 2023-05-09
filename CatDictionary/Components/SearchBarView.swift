@@ -22,6 +22,8 @@ final class SearchBarView: UIView {
         
         $0.layer.cornerRadius = 55/2
         
+//        $0.layer.borderWidth = 0.3
+        
         $0.layer.masksToBounds = false
         $0.layer.shadowRadius = 3
         $0.layer.shadowOpacity = 1
@@ -36,7 +38,7 @@ final class SearchBarView: UIView {
     }
     
     fileprivate lazy var searchBarTextFiled = UITextField().then {
-        $0.placeholder = "키워드로 검색하기" //キーワードで検索
+        $0.placeholder = "Search By ID"
         $0.font = .systemFont(ofSize: 14)
         UITextField.appearance().tintColor = .black
     }

@@ -10,8 +10,10 @@ import Then
 import SnapKit
 
 final class BadgeComponentsView: UIView {
-       
+    
+    // {{endpoint}}v1/categories 에서 fetch 예정
     fileprivate let catsArr = ["boxes", "clothes", "hats", "sinks", "space", "sunglasses", "ties"]
+    
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
     override init(frame: CGRect) {
@@ -29,6 +31,7 @@ final class BadgeComponentsView: UIView {
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumLineSpacing = 30
         flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
 //        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
         collectionView.collectionViewLayout = flowLayout
