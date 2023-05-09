@@ -1,31 +1,23 @@
 //
-//  CatCollectionView.swift
+//  BadgeTableView.swift
 //  CatDictionary
 //
-//  Created by Jayden Jang on 2023/05/08.
+//  Created by Jayden Jang on 2023/05/09.
 //
 
 import UIKit
-import SnapKit
 import Then
+import SnapKit
 
-final class CatComponentsView: UIView {
-    
-    // Elements
-    fileprivate lazy var subtitle = UILabel().then {
-        $0.text = "떼껄룩 모음"
-        $0.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-    }
-    
-    fileprivate let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
-    
+final class BadgeComponentsView: UIView {
+       
+    fileprivate let catsArr = ["boxes", "clothes", "hats", "sinks", "space", "sunglasses", "ties"]
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
+        
         configDelegate()
-        configUI()
         configAddSubview()
         configAutolayout()
     }
@@ -36,55 +28,52 @@ final class CatComponentsView: UIView {
     
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
+//        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
         collectionView.collectionViewLayout = flowLayout
+        collectionView.showsHorizontalScrollIndicator = false
     }
+    
 }
 
 // MARK: - Self UI setting
-extension CatComponentsView {
+extension BadgeComponentsView {
     fileprivate func configUI() {
         
     }
 }
 
 // MARK: - Delegate setting
-extension CatComponentsView {
+extension BadgeComponentsView {
     fileprivate func configDelegate() {
     collectionView.dataSource = self
     collectionView.delegate = self
         
     // regist Cell
-    collectionView.register(CatCollectionViewCell.self, forCellWithReuseIdentifier: "catCollectionViewCell")
+    collectionView.register(BadgeTableViewCell.self, forCellWithReuseIdentifier: "badgeTableViewCell")
     }
 }
 
 // MARK: - AddSubview setting
-extension CatComponentsView {
+extension BadgeComponentsView {
     fileprivate func configAddSubview() {
-        self.addSubview(collectionView)
-        self.addSubview(subtitle)
+        addSubview(collectionView)
     }
 }
 
 // MARK: - AutoLayout setting
-extension CatComponentsView {
+extension BadgeComponentsView {
     fileprivate func configAutolayout() {
-        
         collectionView.snp.makeConstraints {
-            $0.bottom.left.right.equalToSuperview()
-            $0.top.equalTo(subtitle.snp.bottom).offset(10)
-        }
-        
-        subtitle.snp.makeConstraints {
-            $0.top.left.equalToSuperview().offset(10)
+            $0.edges.equalToSuperview()
         }
         
     }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension CatComponentsView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension BadgeComponentsView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,9 +82,9 @@ extension CatComponentsView: UICollectionViewDataSource, UICollectionViewDelegat
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catCollectionViewCell", for: indexPath) as! CatCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTableViewCell", for: indexPath) as! BadgeTableViewCell
 
-        cell.imageView.image = UIImage(systemName: "tray.full.fill")
+        cell.titleLablel.text = catsArr[indexPath.row]
         
         return cell
     }
@@ -106,12 +95,12 @@ extension CatComponentsView: UICollectionViewDataSource, UICollectionViewDelegat
 }
 
 // MARK: - static 메소드 관련
-extension CatComponentsView {
+extension BadgeComponentsView {
     
     /// cat collection 만들기
     /// - Returns: 만들어진 collection
-    static func generateCatComponentsView() -> UIView {
-        return CatComponentsView()
+    static func generateBadgeComponentsView() -> UIView {
+        return BadgeComponentsView()
     }
 }
 
@@ -120,11 +109,11 @@ extension CatComponentsView {
 
 import SwiftUI
 
-struct CatComponentsView_Previews: PreviewProvider {
+struct BadgeComponentsView_Previews: PreviewProvider {
     static var previews: some View {
-        CatComponentsView()
+        BadgeComponentsView()
             .getPreview()
-            .frame(width: 400, height: 330)
+            .frame(width: 500, height: 100)
             .previewLayout(.sizeThatFits)
     }
 }

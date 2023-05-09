@@ -13,6 +13,8 @@ import Fakery
 final class MainViewController: UIViewController {
     
     let searchBar = SearchBarView.generateSearchBarView()
+    let badgeBar = BadgeComponentsView.generateBadgeComponentsView()
+    
     let catList = CatComponentsView.generateCatComponentsView()
     let catList2 = CatComponentsView.generateCatComponentsView()
     let catList3 = CatComponentsView.generateCatComponentsView()
@@ -81,6 +83,7 @@ extension MainViewController {
 extension MainViewController {
     fileprivate func addSubViewConfig() {
         self.view.addSubview(searchBar)
+        self.view.addSubview(badgeBar)
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(containerView)
@@ -104,8 +107,14 @@ extension MainViewController {
             $0.horizontalEdges.equalToSuperview()
         }
         
+        badgeBar.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(15)
+            $0.height.equalTo(30)
+            $0.horizontalEdges.equalToSuperview().offset(10)
+        }
+        
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.top.equalTo(badgeBar.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

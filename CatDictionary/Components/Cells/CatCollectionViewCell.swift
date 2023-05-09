@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 final class CatCollectionViewCell: UICollectionViewCell {
-    static let identifier = "CatCollectionViewCell"
+    static let identifier = "catCollectionViewCell"
     
     var imageView = UIImageView().then {
         $0.clipsToBounds = true
@@ -18,17 +18,22 @@ final class CatCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray5
-        self.layer.cornerRadius = 10
         
-        
-        addSubViewConfig()
-        autolayoutConfig()
+        configUI()
+        configAddSubview()
+        configAutolayout()
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CatCollectionViewCell {
+    fileprivate func configUI() {
+        backgroundColor = .systemGray5
+        self.layer.cornerRadius = 10
     }
 }
 
@@ -44,14 +49,14 @@ extension CatCollectionViewCell {
 
 // MARK: - AddSubview setting
 extension CatCollectionViewCell {
-    fileprivate func addSubViewConfig() {
+    fileprivate func configAddSubview() {
         addSubview(imageView)
     }
 }
 
 // MARK: - AutoLayout setting
 extension CatCollectionViewCell {
-    fileprivate func autolayoutConfig() {
+    fileprivate func configAutolayout() {
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
