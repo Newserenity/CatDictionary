@@ -8,11 +8,24 @@
 import UIKit
 import SnapKit
 import Then
+import Fakery
 
 final class MainViewController: UIViewController {
     
     let searchBar = SearchBarView.generateSearchBarView()
     let catList = CatComponentsView.generateCatComponentsView()
+    let catList2 = CatComponentsView.generateCatComponentsView()
+    let catList3 = CatComponentsView.generateCatComponentsView()
+    
+    let scrollView = UIScrollView().then {
+        $0.isUserInteractionEnabled = true
+        $0.alwaysBounceVertical = true
+    }
+    let containerView = UIView().then {
+        $0.backgroundColor = .white
+    }
+    
+    let contentLabel = UIView()
 
 
     override func viewDidLoad() {
@@ -67,8 +80,17 @@ extension MainViewController {
 // MARK: - AddSubview setting
 extension MainViewController {
     fileprivate func addSubViewConfig() {
-        view.addSubview(searchBar)
-        view.addSubview(catList)
+        self.view.addSubview(searchBar)
+        
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        
+//        containerView.addSubview(contentLabel)
+        
+        containerView.addSubview(catList)
+        containerView.addSubview(catList2)
+        containerView.addSubview(catList3)
+
     }
 }
 
@@ -82,11 +104,40 @@ extension MainViewController {
             $0.horizontalEdges.equalToSuperview()
         }
         
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        containerView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView.contentLayoutGuide.snp.edges)
+            $0.width.equalTo(scrollView.frameLayoutGuide.snp.width).multipliedBy(1)
+        }
+        
         catList.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.top.equalToSuperview()
             $0.width.equalToSuperview().inset(10)
-            
+
+            // 부모 뷰크기가아니라 본인의 뷰크기로 리팩토링하는 방법 찾기
+            $0.height.equalTo(view.frame.width * 3/4)
+        }
+
+        catList2.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(catList.snp.bottom).offset(10)
+            $0.width.equalToSuperview().inset(10)
+
+            // 부모 뷰크기가아니라 본인의 뷰크기로 리팩토링하는 방법 찾기
+            $0.height.equalTo(view.frame.width * 3/4)
+        }
+
+        catList3.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(catList2.snp.bottom).offset(10)
+            $0.width.equalToSuperview().inset(10)
+
             // 부모 뷰크기가아니라 본인의 뷰크기로 리팩토링하는 방법 찾기
             $0.height.equalTo(view.frame.width * 3/4)
         }

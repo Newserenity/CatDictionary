@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D983A262A0A35B7000675A1 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 3D983A252A0A35B7000675A1 /* Fakery */; };
 		3DB0C9E72A08B37E00A234A0 /* CatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9E62A08B37E00A234A0 /* CatCollectionViewCell.swift */; };
 		3DB0C9E92A08D8BD00A234A0 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9E82A08D8BD00A234A0 /* SearchBarView.swift */; };
 		3DB0C9EB2A08FA4000A234A0 /* CatComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9EA2A08FA4000A234A0 /* CatComponentsView.swift */; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D983A262A0A35B7000675A1 /* Fakery in Frameworks */,
 				3DB768452A07B9BF009AFB08 /* Alamofire in Frameworks */,
 				3DB7683F2A07B928009AFB08 /* Then in Frameworks */,
 				3DB768422A07B94E009AFB08 /* SnapKit in Frameworks */,
@@ -241,6 +243,7 @@
 				3DB7683E2A07B928009AFB08 /* Then */,
 				3DB768412A07B94E009AFB08 /* SnapKit */,
 				3DB768442A07B9BF009AFB08 /* Alamofire */,
+				3D983A252A0A35B7000675A1 /* Fakery */,
 			);
 			productName = CatDictionary;
 			productReference = 3DB767FE2A07B364009AFB08 /* CatDictionary.app */;
@@ -318,6 +321,7 @@
 				3DB7683D2A07B928009AFB08 /* XCRemoteSwiftPackageReference "Then" */,
 				3DB768402A07B94E009AFB08 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				3DB768432A07B9BF009AFB08 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */,
 			);
 			productRefGroup = 3DB767FF2A07B364009AFB08 /* Products */;
 			projectDirPath = "";
@@ -714,6 +718,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		3DB7683D2A07B928009AFB08 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -741,6 +753,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3D983A252A0A35B7000675A1 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
 		3DB7683E2A07B928009AFB08 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3DB7683D2A07B928009AFB08 /* XCRemoteSwiftPackageReference "Then" */;
