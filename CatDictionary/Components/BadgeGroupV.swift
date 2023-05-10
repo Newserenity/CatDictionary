@@ -14,7 +14,13 @@ final class BadgeGroupV: UIView {
     // {{endpoint}}v1/categories 에서 fetch 예정
     fileprivate let catsArr = ["boxes", "clothes", "hats", "sinks", "space", "sunglasses", "ties"]
     
-    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    private let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+        $0.minimumLineSpacing = 20
+        $0.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
+    }
+    
+    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,15 +36,21 @@ final class BadgeGroupV: UIView {
     }
 }
 
+//extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//            return 20
+//        }
+//}
+
 // MARK: - override layoutSubviews (flowLayout 관련)
 extension BadgeGroupV {
-    override func layoutSubviews() {
-        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 20
-        flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
-        collectionView.collectionViewLayout = flowLayout
-    }
+//    override func layoutSubviews() {
+//        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        flowLayout.scrollDirection = .horizontal
+////        flowLayout.minimumLineSpacing = 20
+//        flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
+//        collectionView.collectionViewLayout = flowLayout
+//    }
 }
 
 // MARK: - collectionView 설정 관련
@@ -84,6 +96,7 @@ extension BadgeGroupV {
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDelegate 관련
+// dequeueReusableCell
 extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
@@ -96,6 +109,7 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTVCell", for: indexPath) as! BadgeTVCell
         
         cell.setTitleLabel(catsArr[indexPath.row])
+        print(#function, cell.frame.width)
         
         return cell
     }

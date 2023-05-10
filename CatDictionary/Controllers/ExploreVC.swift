@@ -12,11 +12,11 @@ import Fakery
 
 final class ExploreVC: UIViewController {
     
-    fileprivate let searchBar = SearchBarView.generateSearchBarView()
-    fileprivate let badgeBar = BadgeComponentsView.generateBadgeComponentsView()
-    fileprivate let catList = CatComponentsView.generateCatComponentsView()
-    fileprivate let catList2 = CatComponentsView.generateCatComponentsView()
-    fileprivate let catList3 = CatComponentsView.generateCatComponentsView()
+    fileprivate let searchBar = SearchBarV.generateSearchBarView()
+    fileprivate let badgeBar = BadgeGroupV.generateBadgeComponentsView()
+    fileprivate let catList = CatGroupV.generateCatGroupV()
+    fileprivate let catList2 = CatGroupV.generateCatGroupV()
+    fileprivate let catList3 = CatGroupV.generateCatGroupV()
     
     fileprivate let scrollView = UIScrollView().then {
         $0.isUserInteractionEnabled = true

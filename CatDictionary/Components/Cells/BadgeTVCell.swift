@@ -68,6 +68,7 @@ extension BadgeTVCell {
     fileprivate func configLayout() {
         titleLablelBg.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(titleLablel.snp.width).offset(30)
         }
         
         titleLablel.snp.makeConstraints {
