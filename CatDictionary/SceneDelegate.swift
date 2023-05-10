@@ -33,20 +33,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
 
         // 첫번째 화면은 네비게이션컨트롤러로 만들기 (기본루트뷰 설정)
-        let mainViewController = UINavigationController(rootViewController: MainViewController())
-        let uploadViewController = UINavigationController(rootViewController: UploadViewController())
-        let myUploadListViewController = UINavigationController(rootViewController: MyUploadListViewController())
+        let exploreVC = UINavigationController(rootViewController: ExploreVC())
+        let uploadVC = UINavigationController(rootViewController: UploadVC())
+        let myListVC = UINavigationController(rootViewController: MyListVC())
         let starListViewController = UINavigationController(rootViewController: StarListViewController())
 
         // 탭바 이름들 설정
-        mainViewController.title = "Main"
-        uploadViewController.title = "Upload"
-        myUploadListViewController.title = "MyList"
+        exploreVC.title = "Main"
+        uploadVC.title = "Upload"
+        myListVC.title = "MyList"
         starListViewController.title = "Star"
 
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
         tabBarController.setViewControllers([
-            mainViewController,
+            ExploreVC,
             uploadViewController,
             myUploadListViewController,
             starListViewController

@@ -22,6 +22,7 @@ final class BadgeComponentsView: UIView {
         configDelegate()
         configAddSubview()
         configAutolayout()
+        configCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -31,13 +32,18 @@ final class BadgeComponentsView: UIView {
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 30
+        flowLayout.minimumLineSpacing = 20
         flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
 //        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
         collectionView.collectionViewLayout = flowLayout
-        collectionView.showsHorizontalScrollIndicator = false
     }
     
+}
+
+extension BadgeComponentsView {
+    fileprivate func configCollectionView() {
+        collectionView.showsHorizontalScrollIndicator = false
+    }
 }
 
 // MARK: - Self UI setting

@@ -1,48 +1,40 @@
 //
-//  MyUploadListViewController.swift
+//  StarListViewController.swift
 //  CatDictionary
 //
 //  Created by Jayden Jang on 2023/05/07.
 //
 
 import UIKit
-import PhotosUI
-import Then
 
-class MyUploadListViewController: UIViewController {
-    
+class StarListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        config.selection = .ordered
-        config.selectionLimit = 0
-        
-        let picker = PHPickerViewController(configuration: config)
-        
-        uiConfig()
-
+        configUI()
+        configNavbar()
     }
 }
 
+// MARK: - Self UI 세팅
+extension StarListVC {
+    fileprivate func configUI() {
+        self.view.backgroundColor = .systemGray6
+        self.title = "Star" // navbar title
+    }
+}
 
-extension MyUploadListViewController {
-    fileprivate func uiConfig() {
-        view.backgroundColor = .systemGray6
-        
+// MARK: - 네비게이션바 세팅
+extension StarListVC {
+    fileprivate func configNavbar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        
         navigationController?.navigationBar.tintColor = .brown
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        title = "MyList"
     }
 }
 
@@ -51,13 +43,12 @@ extension MyUploadListViewController {
 
 import SwiftUI
 
-struct MyUploadListViewController_Previews: PreviewProvider {
+struct StarListVC_Previews: PreviewProvider {
     static var previews: some View {
-        MyUploadListViewController()
+        StarListVC()
             .getPreview()
             .ignoresSafeArea()
     }
 }
 
 #endif
-
