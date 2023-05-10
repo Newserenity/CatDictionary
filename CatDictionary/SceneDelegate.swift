@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         exploreVC.title = "Main"
         uploadVC.title = "Upload"
         myListVC.title = "MyList"
-        exploreVC.title = "Star"
+        starListVC.title = "Star"
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
         tabBarC.setViewControllers([

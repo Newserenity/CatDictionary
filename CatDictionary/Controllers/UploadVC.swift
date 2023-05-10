@@ -12,27 +12,23 @@ import PhotosUI
 
 class UploadVC: UIViewController {
     
-    lazy var textLabel = UILabel().then {
+    fileprivate lazy var textLabel = UILabel().then {
         $0.text = "Any uploads must comply \n with the upload guidelines or face deletion."
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 13, weight: .bold)
     }
-    
-    lazy var imageBox = UIControl().then {
+    fileprivate lazy var imageBox = UIControl().then {
         $0.layer.borderWidth = 3
         $0.layer.borderColor = UIColor.gray.cgColor
         $0.layer.cornerRadius = 10
     }
-    
-    lazy var imageView = UIImageView().then {
+    fileprivate lazy var imageView = UIImageView().then {
         $0.image = UIImage(systemName: "camera.on.rectangle")
         $0.contentMode = .scaleAspectFit
     }
-    
-    lazy var centerView = UIView()
-    
-    lazy var constructionLabel = UILabel().then {
+    fileprivate lazy var centerView = UIView()
+    fileprivate lazy var constructionLabel = UILabel().then {
         $0.text = "Upload a .jpg or .png cat image."
         $0.numberOfLines = 0
         $0.textAlignment = .center

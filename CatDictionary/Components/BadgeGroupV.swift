@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class BadgeComponentsView: UIView {
+final class BadgeGroupV: UIView {
     
     // {{endpoint}}v1/categories 에서 fetch 예정
     fileprivate let catsArr = ["boxes", "clothes", "hats", "sinks", "space", "sunglasses", "ties"]
@@ -21,59 +21,61 @@ final class BadgeComponentsView: UIView {
         
         configDelegate()
         configAddSubview()
-        configAutolayout()
-        configCollectionView()
+        configLayout()
+        configCV()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+}
+
+// MARK: - override layoutSubviews (flowLayout 관련)
+extension BadgeGroupV {
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 20
         flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
-//        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
         collectionView.collectionViewLayout = flowLayout
     }
-    
 }
 
-extension BadgeComponentsView {
-    fileprivate func configCollectionView() {
+// MARK: - collectionView 설정 관련
+extension BadgeGroupV {
+    fileprivate func configCV() {
         collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
 // MARK: - Self UI setting
-extension BadgeComponentsView {
+extension BadgeGroupV {
     fileprivate func configUI() {
         
     }
 }
 
-// MARK: - Delegate setting
-extension BadgeComponentsView {
+// MARK: - Delegate setting 및 셀등록
+extension BadgeGroupV {
     fileprivate func configDelegate() {
     collectionView.dataSource = self
     collectionView.delegate = self
         
     // regist Cell
-    collectionView.register(BadgeTableViewCell.self, forCellWithReuseIdentifier: "badgeTableViewCell")
+    collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: "badgeTVCell")
     }
 }
 
 // MARK: - AddSubview setting
-extension BadgeComponentsView {
+extension BadgeGroupV {
     fileprivate func configAddSubview() {
         addSubview(collectionView)
     }
 }
 
 // MARK: - AutoLayout setting
-extension BadgeComponentsView {
-    fileprivate func configAutolayout() {
+extension BadgeGroupV {
+    fileprivate func configLayout() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -81,8 +83,8 @@ extension BadgeComponentsView {
     }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension BadgeComponentsView: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegate 관련
+extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,9 +93,9 @@ extension BadgeComponentsView: UICollectionViewDataSource, UICollectionViewDeleg
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTableViewCell", for: indexPath) as! BadgeTableViewCell
-
-        cell.titleLablel.text = catsArr[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTVCell", for: indexPath) as! BadgeTVCell
+        
+        cell.setTitleLabel(catsArr[indexPath.row])
         
         return cell
     }
@@ -104,12 +106,9 @@ extension BadgeComponentsView: UICollectionViewDataSource, UICollectionViewDeleg
 }
 
 // MARK: - static 메소드 관련
-extension BadgeComponentsView {
-    
-    /// cat collection 만들기
-    /// - Returns: 만들어진 collection
+extension BadgeGroupV {
     static func generateBadgeComponentsView() -> UIView {
-        return BadgeComponentsView()
+        return BadgeGroupV()
     }
 }
 
@@ -120,7 +119,7 @@ import SwiftUI
 
 struct BadgeComponentsView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeComponentsView()
+        BadgeGroupV()
             .getPreview()
             .frame(width: 500, height: 100)
             .previewLayout(.sizeThatFits)

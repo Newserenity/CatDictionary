@@ -7,7 +7,7 @@
 
 import UIKit
 
-#if DEBUG // 전처리기
+#if DEBUG
 
 import SwiftUI
 

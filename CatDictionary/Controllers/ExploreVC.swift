@@ -12,22 +12,21 @@ import Fakery
 
 final class ExploreVC: UIViewController {
     
-    let searchBar = SearchBarView.generateSearchBarView()
-    let badgeBar = BadgeComponentsView.generateBadgeComponentsView()
-    let catList = CatComponentsView.generateCatComponentsView()
-    let catList2 = CatComponentsView.generateCatComponentsView()
-    let catList3 = CatComponentsView.generateCatComponentsView()
+    fileprivate let searchBar = SearchBarView.generateSearchBarView()
+    fileprivate let badgeBar = BadgeComponentsView.generateBadgeComponentsView()
+    fileprivate let catList = CatComponentsView.generateCatComponentsView()
+    fileprivate let catList2 = CatComponentsView.generateCatComponentsView()
+    fileprivate let catList3 = CatComponentsView.generateCatComponentsView()
     
-    let scrollView = UIScrollView().then {
+    fileprivate let scrollView = UIScrollView().then {
         $0.isUserInteractionEnabled = true
         $0.alwaysBounceVertical = true
     }
-    let containerView = UIView().then {
+    fileprivate let containerView = UIView().then {
         $0.backgroundColor = .white
     }
     
-    let contentLabel = UIView()
-
+    fileprivate let contentLabel = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

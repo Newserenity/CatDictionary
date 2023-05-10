@@ -7,6 +7,11 @@
 
 import UIKit
 
+//  Explanation : UIView 테두리를 점선으로 만들어줌
+//  Usage : yourView.addDashedBorder()
+//  Author : Jayden Jang
+//  Date : 2023/05/10.
+
 extension UIView {
   func addDashedBorder() {
     let color = UIColor.red.cgColor

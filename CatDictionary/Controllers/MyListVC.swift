@@ -11,7 +11,6 @@ import Then
 
 class MyListVC: UIViewController {
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

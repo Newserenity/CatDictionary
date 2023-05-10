@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class CatCollectionViewCell: UICollectionViewCell {
-    static let identifier = "catCollectionViewCell"
+final class CatCVCell: UICollectionViewCell {
+
+    static let identifier = "catCVCell" // identifier
     
-    var imageView = UIImageView().then {
+    fileprivate lazy var imageView = UIImageView().then {
         $0.clipsToBounds = true
     }
     
@@ -30,32 +31,40 @@ final class CatCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension CatCollectionViewCell {
+// MARK: - Getter, Setter 모음
+extension CatCVCell {
+    func setImageView(_ image: UIImage) {
+        self.imageView.image = image
+    }
+}
+
+// MARK: - self UI 세팅
+extension CatCVCell {
     fileprivate func configUI() {
-        backgroundColor = .systemGray5
+        self.backgroundColor = .systemGray5
         self.layer.cornerRadius = 10
     }
 }
 
 // MARK: - static 메소드 관련
-extension CatCollectionViewCell {
+extension CatCVCell {
     
     /// Cat Cell  만들기
     /// - Returns: Cat Cell
     static func generateCatCollectionViewCell() -> UIView {
-        return CatCollectionViewCell()
+        return CatCVCell()
     }
 }
 
 // MARK: - AddSubview setting
-extension CatCollectionViewCell {
+extension CatCVCell {
     fileprivate func configAddSubview() {
         addSubview(imageView)
     }
 }
 
 // MARK: - AutoLayout setting
-extension CatCollectionViewCell {
+extension CatCVCell {
     fileprivate func configAutolayout() {
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -69,9 +78,9 @@ extension CatCollectionViewCell {
 
 import SwiftUI
 
-struct CatCollectionViewCell_Previews: PreviewProvider {
+struct CatCVCell_Previews: PreviewProvider {
     static var previews: some View {
-        CatCollectionViewCell()
+        CatCVCell()
             .getPreview()
             .frame(width: 140, height: 140)
             .previewLayout(.sizeThatFits)

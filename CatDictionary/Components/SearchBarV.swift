@@ -10,9 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchBarView: UIView {
+final class SearchBarV: UIView {
     
-    // Elements
     fileprivate lazy var topSearchBar = UIStackView().then {
         $0.distribution = .fill
         $0.alignment = .center
@@ -22,21 +21,17 @@ final class SearchBarView: UIView {
         
         $0.layer.cornerRadius = 55/2
         
-//        $0.layer.borderWidth = 0.3
-        
         $0.layer.masksToBounds = false
         $0.layer.shadowRadius = 3
         $0.layer.shadowOpacity = 1
         $0.layer.shadowColor = UIColor.systemGray4.cgColor
         $0.layer.shadowOffset = CGSize(width: 0 , height: 2)
     }
-    
     fileprivate lazy var searchImageView = UIImageView().then {
         $0.image = UIImage(systemName: "magnifyingglass")
         $0.contentMode = .scaleAspectFit
         UIImageView.appearance().tintColor = .black
     }
-    
     fileprivate lazy var searchBarTextFiled = UITextField().then {
         $0.placeholder = "Search By ID"
         $0.font = .systemFont(ofSize: 14)
@@ -49,7 +44,7 @@ final class SearchBarView: UIView {
         configDelegate()
         configUI()
         configAddSubview()
-        configAutolayout()
+        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -57,22 +52,22 @@ final class SearchBarView: UIView {
     }
 }
 
-// MARK: - Self UI setting
-extension SearchBarView {
+// MARK: - self UI 세팅
+extension SearchBarV {
     fileprivate func configUI() {
 
     }
 }
 
-// MARK: - Delegate setting
-extension SearchBarView {
+// MARK: - delegate 관련
+extension SearchBarV {
     fileprivate func configDelegate() {
         searchBarTextFiled.delegate = self
     }
 }
 
-// MARK: - AddSubview setting
-extension SearchBarView {
+// MARK: - addSubview 관련
+extension SearchBarV {
     fileprivate func configAddSubview() {
         self.addSubview(topSearchBar)
         topSearchBar.addArrangedSubview(searchImageView)
@@ -80,9 +75,9 @@ extension SearchBarView {
     }
 }
 
-// MARK: - AutoLayout setting
-extension SearchBarView {
-    fileprivate func configAutolayout() {
+// MARK: - sutoLayout 관련
+extension SearchBarV {
+    fileprivate func configLayout() {
         topSearchBar.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.left.equalToSuperview().offset(15)
@@ -101,12 +96,8 @@ extension SearchBarView {
     }
 }
 
-// MARK: - UITextFieldDelegate Extension
-extension SearchBarView: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.searchBarTextFiled.resignFirstResponder()
-    }
-    
+// MARK: - UITextFieldDelegate 관련
+extension SearchBarV: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.searchBarTextFiled.resignFirstResponder()
         
@@ -114,13 +105,17 @@ extension SearchBarView: UITextFieldDelegate {
     }
 }
 
+// MARK: - override touchesBegan (키보드 내리기)
+extension SearchBarV {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBarTextFiled.resignFirstResponder()
+    }
+}
+
 // MARK: - static 메소드 관련
-extension SearchBarView {
-    
-    /// 서피바 만들기
-    /// - Returns: 만들어진 서피바
+extension SearchBarV {
     static func generateSearchBarView() -> UIView {
-        return SearchBarView()
+        return SearchBarV()
     }
 }
 
@@ -129,9 +124,9 @@ extension SearchBarView {
 
 import SwiftUI
 
-struct SearchBarView_Previews: PreviewProvider {
+struct SearchBarV_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView()
+        SearchBarV()
             .getPreview()
             .frame(width: 500, height: 100)
             .previewLayout(.sizeThatFits)
