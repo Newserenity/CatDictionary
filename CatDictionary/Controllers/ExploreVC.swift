@@ -95,8 +95,9 @@ extension ExploreVC {
         
         badgeBar.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(15)
-            $0.height.equalTo(30)
-            $0.horizontalEdges.equalToSuperview().offset(10)
+            $0.height.equalTo(40)
+            $0.left.equalToSuperview().offset(5)
+            $0.right.equalToSuperview().offset(-5)
         }
         
         scrollView.snp.makeConstraints {
@@ -144,7 +145,7 @@ extension ExploreVC {
 // MARK: - CollectionView Delegate 관련
 extension ExploreVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, "path : \(indexPath)")
+
     }
 }
 

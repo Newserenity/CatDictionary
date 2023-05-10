@@ -19,12 +19,17 @@ final class BadgeTVCell: UICollectionViewCell {
         $0.textAlignment = .center
         $0.textColor = .white
         $0.numberOfLines = 1
-    }
-    fileprivate lazy var titleLablelBg = UIView().then {
         $0.backgroundColor = .systemTeal
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 15 //높이에 따라 동적으로 변하게 수정
     }
+    
+    //FIXME: 굳이 View를 만들지 않아도, UILabel안에서 BackgroundColor값과 cornerRadius값을 지정할 수 있음!!!!!! 해당View는 무의미!
+//    fileprivate lazy var titleLablelBg = UIView().then {
+//        $0.backgroundColor = .systemTeal
+//        $0.layer.masksToBounds = true
+//        $0.layer.cornerRadius = 15 //높이에 따라 동적으로 변하게 수정
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,14 +40,6 @@ final class BadgeTVCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func adjustCellSize(height: CGFloat, label: String) -> CGSize {
-        self.titleLablel.text = label
-        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height:height)
-        return self.contentView.systemLayoutSizeFitting(targetSize,
-                                                        withHorizontalFittingPriority:.fittingSizeLevel,
-                                                        verticalFittingPriority:.required)
     }
 }
 
@@ -66,24 +63,16 @@ extension BadgeTVCell {
 // MARK: - addSubview 관련
 extension BadgeTVCell {
     fileprivate func configAddSubview() {
-        addSubview(titleLablelBg)
-        self.titleLablelBg.addSubview(titleLablel)
+        addSubview(titleLablel)
     }
 }
 
 // MARK: - Autolayout 관련
 extension BadgeTVCell {
     fileprivate func configLayout() {
-        titleLablelBg.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(titleLablel.snp.width).offset(30)
-        }
-        
         titleLablel.snp.makeConstraints {
-            $0.height.equalTo(20)
-            $0.width.lessThanOrEqualTo(100)
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15))
-            
+            // 여백 지정값의 경우 collectionView FlowLayoutDelegate에서 지정해줄거니 제약조건을 모두 SuperView에 맞춤
+            $0.edges.equalToSuperview()
         }
     }
 }

@@ -16,8 +16,8 @@ final class BadgeGroupV: UIView {
     
     private let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
-        $0.minimumLineSpacing = 20
-        $0.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
+        $0.minimumLineSpacing = 5
+//        $0.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
     }
     
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -39,11 +39,19 @@ final class BadgeGroupV: UIView {
 // MARK: - UICollectionViewDelegateFlowLayout (collectionView의 전체적인 레이아웃 설정)
 extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "badgeTVCell", for: indexPath
-        ) as? BadgeTVCell else { return .zero }
+        let category = catsArr[indexPath.row]
         
-        return cell.adjustCellSize(height: 0, label: catsArr[indexPath.row])
+        // 나중에 사용하고있는 폰트의 크기값으로 변경
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
+        
+        // 현재 cateArr값안에 있는 String에 대한 값의 사이즈를 가져옴
+        let categorySize = category.size(withAttributes: attributes as [NSAttributedString.Key: Any])
+        
+        /*
+          사이즈값에 대한 여백 설정 양옆 15씩 위아래 5씩
+          BadgeTVCell에 있는 Label의 autoLayout을 여기서 줬다고 생각하면 편함
+         */
+        return CGSize(width: categorySize.width + 15 + 15, height: 20 + 5 + 5)
     }
 }
 
