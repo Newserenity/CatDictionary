@@ -36,6 +36,14 @@ final class BadgeTVCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func adjustCellSize(height: CGFloat, label: String) -> CGSize {
+        self.titleLablel.text = label
+        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height:height)
+        return self.contentView.systemLayoutSizeFitting(targetSize,
+                                                        withHorizontalFittingPriority:.fittingSizeLevel,
+                                                        verticalFittingPriority:.required)
+    }
 }
 
 // MARK: - Getter, Setter 모음

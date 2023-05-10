@@ -36,21 +36,15 @@ final class BadgeGroupV: UIView {
     }
 }
 
-//extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//            return 20
-//        }
-//}
-
-// MARK: - override layoutSubviews (flowLayout 관련)
-extension BadgeGroupV {
-//    override func layoutSubviews() {
-//        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        flowLayout.scrollDirection = .horizontal
-////        flowLayout.minimumLineSpacing = 20
-//        flowLayout.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
-//        collectionView.collectionViewLayout = flowLayout
-//    }
+// MARK: - UICollectionViewDelegateFlowLayout (collectionView의 전체적인 레이아웃 설정)
+extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "badgeTVCell", for: indexPath
+        ) as? BadgeTVCell else { return .zero }
+        
+        return cell.adjustCellSize(height: 0, label: catsArr[indexPath.row])
+    }
 }
 
 // MARK: - collectionView 설정 관련
@@ -107,7 +101,6 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTVCell", for: indexPath) as! BadgeTVCell
-        
         cell.setTitleLabel(catsArr[indexPath.row])
         print(#function, cell.frame.width)
         
