@@ -18,14 +18,11 @@ class UploadVC: UIViewController {
         $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 13, weight: .bold)
     }
-    fileprivate lazy var imageBox = UIControl().then {
-        $0.layer.borderWidth = 3
-        $0.layer.borderColor = UIColor.gray.cgColor
-        $0.layer.cornerRadius = 10
-    }
     fileprivate lazy var imageView = UIImageView().then {
+        $0.backgroundColor = .white
         $0.image = UIImage(systemName: "camera.on.rectangle")
         $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = 10
     }
     fileprivate lazy var centerView = UIView()
     fileprivate lazy var constructionLabel = UILabel().then {
@@ -81,8 +78,7 @@ extension UploadVC {
         self.view.addSubview(constructionLabel)
         self.view.addSubview(button)
         centerView.addSubview(textLabel)
-        centerView.addSubview(imageBox)
-        imageBox.addSubview(imageView)
+        centerView.addSubview(imageView)
         
     }
 }
@@ -100,7 +96,7 @@ extension UploadVC {
             $0.top.equalToSuperview()
         }
         
-        imageBox.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(textLabel.snp.bottom).offset(10)
             $0.size.equalTo(self.view.bounds.width * 3/5)
@@ -116,9 +112,6 @@ extension UploadVC {
             $0.bottom.equalTo(constructionLabel.snp.top).offset(-30)
         }
         
-        imageView.snp.makeConstraints {
-            $0.edges.equalTo(imageBox.snp.edges)
-        }
     }
 }
 

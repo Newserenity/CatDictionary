@@ -9,18 +9,39 @@ import UIKit
 
 class StarListVC: UIViewController {
 
+    fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configUI()
-        configNavbar()
+        configAddSubview()
+        configLayout()
+    }
+}
+
+// MARK: - addSubview 관련
+extension StarListVC {
+    fileprivate func configAddSubview() {
+        self.view.addSubview(myCatList)
+    }
+}
+
+// MARK: - autolayout 관련
+extension StarListVC {
+    fileprivate func configLayout() {
+        myCatList.snp.makeConstraints {
+            $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
+            $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
+            $0.verticalEdges.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
 }
 
 // MARK: - Self UI 세팅
 extension StarListVC {
     fileprivate func configUI() {
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .white
         self.title = "Star" // navbar title
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D26B93F2A0CC82F00EAB059 /* infinitCatGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */; };
 		3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */; };
 		3D983A262A0A35B7000675A1 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 3D983A252A0A35B7000675A1 /* Fakery */; };
 		3D983A282A0A3D1F000675A1 /* BadgeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infinitCatGroupV.swift; sourceTree = "<group>"; };
 		3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewDashedBorder+Ext.swift"; sourceTree = "<group>"; };
 		3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTVCell.swift; sourceTree = "<group>"; };
 		3D983A292A0A4118000675A1 /* BadgeGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeGroupV.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				3DB0C9E52A088A6300A234A0 /* Cells */,
 				3DB0C9E82A08D8BD00A234A0 /* SearchBarV.swift */,
 				3DB0C9EA2A08FA4000A234A0 /* CatGroupV.swift */,
+				3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */,
 				3D983A292A0A4118000675A1 /* BadgeGroupV.swift */,
 			);
 			path = Components;
@@ -379,6 +382,7 @@
 				3DB0C9E92A08D8BD00A234A0 /* SearchBarV.swift in Sources */,
 				3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */,
 				3DB0C9EB2A08FA4000A234A0 /* CatGroupV.swift in Sources */,
+				3D26B93F2A0CC82F00EAB059 /* infinitCatGroupV.swift in Sources */,
 				3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */,
 				3DB768362A07B486009AFB08 /* UIViewController+Ext.swift in Sources */,
 			);

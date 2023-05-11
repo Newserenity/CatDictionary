@@ -12,7 +12,7 @@ import Then
 
 final class SearchBarV: UIView {
     
-    fileprivate lazy var topSearchBar = UIStackView().then {
+    fileprivate lazy var searchBarSV = UIStackView().then {
         $0.distribution = .fill
         $0.alignment = .center
         $0.axis = .horizontal
@@ -69,28 +69,27 @@ extension SearchBarV {
 // MARK: - addSubview 관련
 extension SearchBarV {
     fileprivate func configAddSubview() {
-        self.addSubview(topSearchBar)
-        topSearchBar.addArrangedSubview(searchImageView)
-        topSearchBar.addArrangedSubview(searchBarTextFiled)
+        self.addSubview(searchBarSV)
+        searchBarSV.addArrangedSubview(searchImageView)
+        searchBarSV.addArrangedSubview(searchBarTextFiled)
     }
 }
 
-// MARK: - sutoLayout 관련
+// MARK: - autoLayout 관련
 extension SearchBarV {
     fileprivate func configLayout() {
-        topSearchBar.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.left.equalToSuperview().offset(15)
-            $0.height.equalTo(55)
+        searchBarSV.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(50)
         }
         
         searchImageView.snp.makeConstraints {
             $0.size.equalTo(20)
-            $0.left.equalTo(topSearchBar.snp.left).offset(20)
+            $0.left.equalTo(searchBarSV.snp.left).offset(20)
         }
         
         searchBarTextFiled.snp.makeConstraints {
-            $0.right.equalTo(topSearchBar.snp.right).offset(100)
+            $0.right.equalTo(searchBarSV.snp.right).offset(100)
         }
         
     }
@@ -128,7 +127,7 @@ struct SearchBarV_Previews: PreviewProvider {
     static var previews: some View {
         SearchBarV()
             .getPreview()
-            .frame(width: 500, height: 100)
+            .frame(width: 400, height: 60)
             .previewLayout(.sizeThatFits)
     }
 }

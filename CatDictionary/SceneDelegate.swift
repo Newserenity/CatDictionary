@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarC.tabBar.layer.borderColor = UIColor.lightGray.cgColor
         
         // 탭바 이미지 설정
-        guard let items =         tabBarC.tabBar.items else { return }
+        guard let items = tabBarC.tabBar.items else { return }
         items[0].image = UIImage(systemName: "magnifyingglass")
         items[1].image = UIImage(systemName: "camera.fill")
         items[2].image = UIImage(systemName: "checklist.unchecked")

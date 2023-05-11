@@ -6,24 +6,44 @@
 //
 
 import UIKit
-import PhotosUI
 import Then
 
 class MyListVC: UIViewController {
+    
+    fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configUI()
-        configNavbar()
+        configAddSubview()
+        configLayout()
     }
 }
 
 // MARK: - Self UI 세팅
 extension MyListVC {
     fileprivate func configUI() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .white
         title = "MyList" // navbar title
+    }
+}
+
+// MARK: - addSubview 관련
+extension MyListVC {
+    fileprivate func configAddSubview() {
+        self.view.addSubview(myCatList)
+    }
+}
+
+// MARK: - autolayout 관련
+extension MyListVC {
+    fileprivate func configLayout() {
+        myCatList.snp.makeConstraints {
+            $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
+            $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
+            $0.verticalEdges.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
 }
 
@@ -39,6 +59,7 @@ extension MyListVC {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
+
 
 // MARK: - Preview 관련
 #if DEBUG
