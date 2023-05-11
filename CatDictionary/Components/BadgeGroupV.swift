@@ -76,7 +76,7 @@ extension BadgeGroupV {
     collectionView.delegate = self
         
     // regist Cell
-    collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: "badgeTVCell")
+        collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: BadgeTVCell.identifier)
     }
 }
 
@@ -108,7 +108,7 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeTVCell", for: indexPath) as! BadgeTVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BadgeTVCell.identifier, for: indexPath) as! BadgeTVCell
         cell.setTitleLabel(catsArr[indexPath.row])
         print(#function, cell.frame.width)
         

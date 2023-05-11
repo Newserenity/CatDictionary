@@ -52,7 +52,7 @@ extension CatGroupV {
     collectionView.delegate = self
         
     // regist Cell
-    collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: "catCVCell")
+        collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: CatCVCell.identifier)
     }
 }
 
@@ -90,7 +90,7 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catCVCell", for: indexPath) as! CatCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCVCell.identifier, for: indexPath) as! CatCVCell
         
         cell.setImageView(UIImage(systemName: "person.fill")!)
         

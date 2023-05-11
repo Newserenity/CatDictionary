@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D26B93F2A0CC82F00EAB059 /* infinitCatGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */; };
+		3D26B9412A0D290700EAB059 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9402A0D290700EAB059 /* Env.swift */; };
 		3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */; };
 		3D983A262A0A35B7000675A1 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 3D983A252A0A35B7000675A1 /* Fakery */; };
 		3D983A282A0A3D1F000675A1 /* BadgeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infinitCatGroupV.swift; sourceTree = "<group>"; };
+		3D26B9402A0D290700EAB059 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewDashedBorder+Ext.swift"; sourceTree = "<group>"; };
 		3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTVCell.swift; sourceTree = "<group>"; };
 		3D983A292A0A4118000675A1 /* BadgeGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeGroupV.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		3DB768472A07BAD0009AFB08 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				3D26B9402A0D290700EAB059 /* Env.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */,
+				3D26B9412A0D290700EAB059 /* Env.swift in Sources */,
 				3DB7680C2A07B364009AFB08 /* CatDictionary.xcdatamodeld in Sources */,
 				3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */,
 				3DB768492A07C1E8009AFB08 /* UploadVC.swift in Sources */,
