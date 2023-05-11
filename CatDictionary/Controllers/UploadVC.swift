@@ -34,6 +34,16 @@ class UploadVC: UIViewController {
         $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
+    private var config = UIButton.Configuration.filled()
+    fileprivate lazy var button = UIButton().then {
+        $0.addTarget(self, action: #selector(btnPressed), for: .touchUpInside)
+        $0.configuration = .filled()
+        config.title = "Select"
+        config.baseBackgroundColor = .systemTeal
+        config.cornerStyle = .capsule
+        config.titlePadding = 10
+        $0.configuration = self.config
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +55,35 @@ class UploadVC: UIViewController {
     }
 }
 
+extension UploadVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
+    {
+        imageView.image = (info[.originalImage] as? UIImage)
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - event handler
+extension UploadVC {
+    @objc fileprivate func btnPressed() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+}
+
 // MARK: - addSubview 관련
 extension UploadVC {
     fileprivate func configAddSubview() {
         self.view.addSubview(centerView)
+        self.view.addSubview(constructionLabel)
+        self.view.addSubview(button)
         centerView.addSubview(textLabel)
         centerView.addSubview(imageBox)
         imageBox.addSubview(imageView)
-        self.view.addSubview(constructionLabel)
+        
     }
 }
 
@@ -78,6 +109,11 @@ extension UploadVC {
         constructionLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(40)
+        }
+        
+        button.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(constructionLabel.snp.top).offset(-30)
         }
         
         imageView.snp.makeConstraints {
