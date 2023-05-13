@@ -12,13 +12,12 @@ final class NetworkLogger: EventMonitor {
     let queue: DispatchQueue = DispatchQueue(label: "ApiLog")
     
     func requestDidResume(_ request: Request) {
-        print(#function)
+        return
     }
     
     func request(_ request: DataRequest, didParseResponse response: DataResponse<Data?, AFError>) {
         
         guard let statusCode = request.response?.statusCode else { return }
-        
-        print(#function, statusCode)
+    
     }
 }

@@ -11,10 +11,11 @@
 		3D26B9412A0D290700EAB059 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9402A0D290700EAB059 /* Constant.swift */; };
 		3D26B9432A0E3F7700EAB059 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9422A0E3F7700EAB059 /* NetworkManager.swift */; };
 		3D26B9452A0E49A500EAB059 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9442A0E49A500EAB059 /* BaseInterceptor.swift */; };
-		3D26B9472A0E4E4300EAB059 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9462A0E4E4300EAB059 /* NetworkLogger.swift */; };
 		3D26B9492A0E8CE100EAB059 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9482A0E8CE100EAB059 /* Router.swift */; };
 		3D26B94B2A0F2CF900EAB059 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3D26B94A2A0F2CF900EAB059 /* Config.xcconfig */; };
 		3D26B94D2A0F2F8000EAB059 /* ConfigProd.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3D26B94C2A0F2F8000EAB059 /* ConfigProd.xcconfig */; };
+		3D26B94F2A0F706000EAB059 /* CatExplore+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */; };
+		3D26B9512A0F983800EAB059 /* CatExploreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B9502A0F983800EAB059 /* CatExploreVM.swift */; };
 		3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */; };
 		3D983A262A0A35B7000675A1 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 3D983A252A0A35B7000675A1 /* Fakery */; };
 		3D983A282A0A3D1F000675A1 /* BadgeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */; };
@@ -63,10 +64,11 @@
 		3D26B9402A0D290700EAB059 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		3D26B9422A0E3F7700EAB059 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D26B9442A0E49A500EAB059 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
-		3D26B9462A0E4E4300EAB059 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		3D26B9482A0E8CE100EAB059 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3D26B94A2A0F2CF900EAB059 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3D26B94C2A0F2F8000EAB059 /* ConfigProd.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigProd.xcconfig; sourceTree = "<group>"; };
+		3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatExplore+Res.swift"; sourceTree = "<group>"; };
+		3D26B9502A0F983800EAB059 /* CatExploreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatExploreVM.swift; sourceTree = "<group>"; };
 		3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewDashedBorder+Ext.swift"; sourceTree = "<group>"; };
 		3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTVCell.swift; sourceTree = "<group>"; };
 		3D983A292A0A4118000675A1 /* BadgeGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeGroupV.swift; sourceTree = "<group>"; };
@@ -202,6 +204,8 @@
 		3DB7683A2A07B80F009AFB08 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */,
+				3D26B9502A0F983800EAB059 /* CatExploreVM.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,7 +239,6 @@
 				3D26B9422A0E3F7700EAB059 /* NetworkManager.swift */,
 				3D26B9482A0E8CE100EAB059 /* Router.swift */,
 				3D26B9442A0E49A500EAB059 /* BaseInterceptor.swift */,
-				3D26B9462A0E4E4300EAB059 /* NetworkLogger.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -400,6 +403,8 @@
 				3DB768492A07C1E8009AFB08 /* UploadVC.swift in Sources */,
 				3DB7684C2A07C233009AFB08 /* MyListVC.swift in Sources */,
 				3D983A282A0A3D1F000675A1 /* BadgeTVCell.swift in Sources */,
+				3D26B94F2A0F706000EAB059 /* CatExplore+Res.swift in Sources */,
+				3D26B9512A0F983800EAB059 /* CatExploreVM.swift in Sources */,
 				3DB768062A07B364009AFB08 /* ExploreVC.swift in Sources */,
 				3D26B9452A0E49A500EAB059 /* BaseInterceptor.swift in Sources */,
 				3D26B9492A0E8CE100EAB059 /* Router.swift in Sources */,
@@ -408,7 +413,6 @@
 				3DB768382A07B49E009AFB08 /* UIView+Ext.swift in Sources */,
 				3DB0C9E92A08D8BD00A234A0 /* SearchBarV.swift in Sources */,
 				3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */,
-				3D26B9472A0E4E4300EAB059 /* NetworkLogger.swift in Sources */,
 				3DB0C9EB2A08FA4000A234A0 /* CatGroupV.swift in Sources */,
 				3D26B93F2A0CC82F00EAB059 /* infinitCatGroupV.swift in Sources */,
 				3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */,
@@ -587,6 +591,7 @@
 				DEVELOPMENT_TEAM = 55M8D74RGH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CatDictionary/Info.plist;
+				"INFOPLIST_KEY_CFBundleDisplayName[sdk=*]" = "디버그";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -619,6 +624,7 @@
 				DEVELOPMENT_TEAM = 55M8D74RGH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CatDictionary/Info.plist;
+				"INFOPLIST_KEY_CFBundleDisplayName[sdk=*]" = "릴리즈";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -12,8 +12,7 @@ import Foundation
 
 // 사용하게될 API 문자열 묶음
 enum API {
-    static let BASE_URL = "https://api.thecatapi.com/v1/"
-    static let IMAGE_SEARCH = "images/search?order=ASC&limit=21"
+    static let BASE_URL = "https://api.thecatapi.com/v1"
 }
 
 // Cell identifier
