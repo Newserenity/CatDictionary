@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  CatDictionary
+//
+//  Created by Jayden Jang on 2023/05/13.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY=live_idxpO7rEU2KHdfVSdJ7BlG0J3uTrEP9YCOvCExs4EeA8V4ckjFG3MCDLiqG6rl6K

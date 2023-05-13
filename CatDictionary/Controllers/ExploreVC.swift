@@ -7,12 +7,14 @@
 
 import UIKit
 import Then
+import SnapKit
 
 class ExploreVC: UIViewController {
     
     fileprivate let searchBar = SearchBarV.generateSearchBarView()
     fileprivate let badgeBar = BadgeGroupV.generateBadgeComponentsView()
     fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
+    fileprivate let network = NetworkManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,10 @@ class ExploreVC: UIViewController {
         configUI()
         configAddSubview()
         configLayout()
+        
+        network.fetchMainCatList {
+            return
+        }
     }
 }
 
