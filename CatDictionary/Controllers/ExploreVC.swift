@@ -15,23 +15,31 @@ class ExploreVC: UIViewController {
     fileprivate let badgeBar = BadgeGroupV.generateBadgeComponentsView()
     fileprivate let myCatList = infinitCatGroupV()
     
+    // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configUI()
         configAddSubview()
         configLayout()
+        configNavbar()
+        
+        self.view.backgroundColor = .white
         
         NetworkManager.shared.fetchMainCatList { res in
             self.myCatList.setCatsArr(res)
         }
     }
-}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // navbar hide setting
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
-// MARK: - Self UI 세팅
-extension ExploreVC {
-    fileprivate func configUI() {
-        view.backgroundColor = .white
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // navbar hide setting
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
@@ -67,32 +75,6 @@ extension ExploreVC {
             $0.right.equalToSuperview().offset(-10)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
-    }
-}
-
-// MARK: - 네비게이션바 세팅
-extension ExploreVC {
-    fileprivate func configNavbar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        navigationController?.navigationBar.tintColor = .brown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.isHidden = true
-    }
-}
-
-// MARK: - Hide Navbar
-extension ExploreVC {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 

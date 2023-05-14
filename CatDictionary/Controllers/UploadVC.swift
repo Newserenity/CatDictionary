@@ -47,9 +47,12 @@ class UploadVC: UIViewController {
         super.viewDidLoad()
         
         configUI()
-        configNavbar()
         configAddSubview()
         configLayout()
+        
+        configNavbar()
+        
+        self.view.backgroundColor = .white
     }
 }
 
@@ -120,20 +123,7 @@ extension UploadVC {
 extension UploadVC {
     fileprivate func configUI() {
         self.view.backgroundColor = .systemGray6
-        self.title = "Upload" // navbar title
-    }
-}
-
-// MARK: - 네비게이션바 세팅
-extension UploadVC {
-    fileprivate func configNavbar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        navigationController?.navigationBar.tintColor = .brown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Upload"
     }
 }
 

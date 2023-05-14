@@ -18,14 +18,16 @@ class MyListVC: UIViewController {
         configUI()
         configAddSubview()
         configLayout()
+        configNavbar()
+        
+        self.view.backgroundColor = .white
     }
 }
 
 // MARK: - Self UI 세팅
 extension MyListVC {
     fileprivate func configUI() {
-        view.backgroundColor = .white
-        title = "MyList" // navbar title
+        title = "MyList"
     }
 }
 
@@ -44,19 +46,6 @@ extension MyListVC {
             $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
             $0.verticalEdges.equalTo(self.view.safeAreaLayoutGuide)
         }
-    }
-}
-
-// MARK: - 네비게이션바 세팅
-extension MyListVC {
-    fileprivate func configNavbar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        navigationController?.navigationBar.tintColor = .brown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

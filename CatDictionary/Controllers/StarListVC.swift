@@ -17,6 +17,7 @@ class StarListVC: UIViewController {
         configUI()
         configAddSubview()
         configLayout()
+        configNavbar()
     }
 }
 
@@ -43,19 +44,6 @@ extension StarListVC {
     fileprivate func configUI() {
         self.view.backgroundColor = .white
         self.title = "Star" // navbar title
-    }
-}
-
-// MARK: - 네비게이션바 세팅
-extension StarListVC {
-    fileprivate func configNavbar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        navigationController?.navigationBar.tintColor = .brown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

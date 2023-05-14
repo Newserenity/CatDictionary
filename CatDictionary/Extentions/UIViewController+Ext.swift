@@ -27,6 +27,16 @@ extension UIViewController {
     func getPreview() -> some View {
         VCRepresentable(viewController: self)
     }
+    
+    func configNavbar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        navigationController?.navigationBar.tintColor = .brown
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }
 
 #endif

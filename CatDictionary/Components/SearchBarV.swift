@@ -12,26 +12,10 @@ import Then
 
 final class SearchBarV: UIView {
     
-    fileprivate lazy var searchBarSV = UIStackView().then {
-        $0.distribution = .fill
-        $0.alignment = .center
-        $0.axis = .horizontal
-        $0.spacing = 10
-        $0.backgroundColor = .white
-        
-        $0.layer.cornerRadius = 55/2
-        
-        $0.layer.masksToBounds = false
-        $0.layer.shadowRadius = 3
-        $0.layer.shadowOpacity = 1
-        $0.layer.shadowColor = UIColor.systemGray4.cgColor
-        $0.layer.shadowOffset = CGSize(width: 0 , height: 2)
-    }
-    
     fileprivate lazy var searchView = UIView().then {
         $0.backgroundColor = .white
         
-        $0.layer.cornerRadius = 55/2
+        $0.layer.cornerRadius = 50/2
         
         $0.layer.masksToBounds = false
         $0.layer.shadowRadius = 3
