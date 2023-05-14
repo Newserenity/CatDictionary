@@ -88,7 +88,7 @@ extension UploadVC {
 extension UploadVC {
     fileprivate func configLayout() {
         centerView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(100)
         }
         

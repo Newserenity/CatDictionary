@@ -9,7 +9,7 @@ import UIKit
 
 class StarListVC: UIViewController {
 
-    fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
+    fileprivate let myCatList = infinitCatGroupV()
     
     override func viewDidLoad() {
         super.viewDidLoad()

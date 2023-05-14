@@ -102,12 +102,6 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 }
 
-// MARK: - static 메소드 관련
-extension CatGroupV {
-    static func generateCatGroupV() -> UIView {
-        return CatGroupV()
-    }
-}
 
 // MARK: - Preview 관련
 #if DEBUG

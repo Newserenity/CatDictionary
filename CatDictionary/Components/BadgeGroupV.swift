@@ -110,7 +110,6 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BadgeTVCell.identifier, for: indexPath) as! BadgeTVCell
         cell.setTitleLabel(catsArr[indexPath.row])
-        print(#function, cell.frame.width)
         
         return cell
     }

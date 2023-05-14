@@ -11,10 +11,9 @@ import SnapKit
 
 class ExploreVC: UIViewController {
     
-    fileprivate let searchBar = SearchBarV.generateSearchBarView()
+    fileprivate let searchBar = SearchBarV()
     fileprivate let badgeBar = BadgeGroupV.generateBadgeComponentsView()
-    fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
-    fileprivate let network = NetworkManager.shared
+    fileprivate let myCatList = infinitCatGroupV()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +22,8 @@ class ExploreVC: UIViewController {
         configAddSubview()
         configLayout()
         
-        network.fetchMainCatList { res in
-            
+        NetworkManager.shared.fetchMainCatList { res in
+            self.myCatList.setCatsArr(res)
         }
     }
 }

@@ -9,8 +9,8 @@ import UIKit
 import Then
 
 class MyListVC: UIViewController {
-    
-    fileprivate let myCatList = infinitCatGroupV.generateCatGroupV()
+
+    fileprivate let myCatList = infinitCatGroupV()
     
     override func viewDidLoad() {
         super.viewDidLoad()

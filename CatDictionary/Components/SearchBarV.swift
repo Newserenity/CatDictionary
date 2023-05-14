@@ -27,6 +27,19 @@ final class SearchBarV: UIView {
         $0.layer.shadowColor = UIColor.systemGray4.cgColor
         $0.layer.shadowOffset = CGSize(width: 0 , height: 2)
     }
+    
+    fileprivate lazy var searchView = UIView().then {
+        $0.backgroundColor = .white
+        
+        $0.layer.cornerRadius = 55/2
+        
+        $0.layer.masksToBounds = false
+        $0.layer.shadowRadius = 3
+        $0.layer.shadowOpacity = 1
+        $0.layer.shadowColor = UIColor.systemGray4.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0 , height: 2)
+    }
+    
     fileprivate lazy var searchImageView = UIImageView().then {
         $0.image = UIImage(systemName: "magnifyingglass")
         $0.contentMode = .scaleAspectFit
@@ -69,27 +82,35 @@ extension SearchBarV {
 // MARK: - addSubview 관련
 extension SearchBarV {
     fileprivate func configAddSubview() {
-        self.addSubview(searchBarSV)
-        searchBarSV.addArrangedSubview(searchImageView)
-        searchBarSV.addArrangedSubview(searchBarTextFiled)
+        searchView.addSubview(searchImageView)
+        searchView.addSubview(searchBarTextFiled)
+        
+        addSubview(searchView)
     }
 }
 
 // MARK: - autoLayout 관련
 extension SearchBarV {
     fileprivate func configLayout() {
-        searchBarSV.snp.makeConstraints {
+//        searchBarSV.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//            $0.height.equalTo(50)
+//        }
+        searchView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.height.equalTo(50)
         }
         
         searchImageView.snp.makeConstraints {
             $0.size.equalTo(20)
-            $0.left.equalTo(searchBarSV.snp.left).offset(20)
+            $0.left.equalTo(searchView.snp.left).offset(20)
+            $0.centerY.equalToSuperview()
         }
         
         searchBarTextFiled.snp.makeConstraints {
-            $0.right.equalTo(searchBarSV.snp.right).offset(100)
+            $0.left.equalTo(searchImageView.snp.right).offset(10)
+            $0.top.bottom.equalToSuperview()
+            $0.right.equalToSuperview()
         }
         
     }
@@ -111,12 +132,6 @@ extension SearchBarV {
     }
 }
 
-// MARK: - static 메소드 관련
-extension SearchBarV {
-    static func generateSearchBarView() -> UIView {
-        return SearchBarV()
-    }
-}
 
 // MARK: - Preview 관련
 #if DEBUG

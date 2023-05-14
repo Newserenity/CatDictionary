@@ -11,7 +11,8 @@ import Then
 
 final class infinitCatGroupV: UIView {
     
-    fileprivate var catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat1", "cat2", "cat3", "cat4", "cat5", "cat1", "cat2", "cat3", "cat4", "cat5", "cat1", "cat2", "cat3", "cat4", "cat5", "cat1", "cat2", "cat3", "cat4", "cat5", "cat1", "cat2", "cat3", "cat4", "cat5"]
+    fileprivate var catsArr:CatExploreRes = []
+
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
     override init(frame: CGRect) {
@@ -37,8 +38,9 @@ final class infinitCatGroupV: UIView {
 
 // MARK: - Getter, Setter 모음
 extension infinitCatGroupV {
-    public func setCatsArr(_ arr: [String]) {
+    public func setCatsArr(_ arr: CatExploreRes) {
         self.catsArr = arr
+        collectionView.reloadData()
     }
 }
 
@@ -88,20 +90,12 @@ extension infinitCatGroupV: UICollectionViewDataSource, UICollectionViewDelegate
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCVCell.identifier, for: indexPath) as! CatCVCell
-        
-        cell.setImageView(UIImage(systemName: "person.fill")!)
+//        cell.setImageView(UIImage(systemName: "person.fill")!)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-}
-
-// MARK: - static 메소드 관련
-extension infinitCatGroupV {
-    static func generateCatGroupV() -> UIView {
-        return infinitCatGroupV()
     }
 }
 
