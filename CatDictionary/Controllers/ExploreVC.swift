@@ -23,8 +23,8 @@ class ExploreVC: UIViewController {
         configAddSubview()
         configLayout()
         
-        network.fetchMainCatList {
-            return
+        network.fetchMainCatList { res in
+            
         }
     }
 }

@@ -21,10 +21,10 @@ final class NetworkManager {
         session = Session(interceptor: interceptors)
     }
     
-    func fetchMainCatList(completion: @escaping ()->Void) {
+    func fetchMainCatList(completion: @escaping (_: CatExploreRes)->Void) {
         session.request(Router.search(limit: 21)).responseDecodable(of: CatExploreRes.self, completionHandler: { res in
-            print(res.description)
+            guard let safeValue = res.value else { return }
+            completion(safeValue)
         })
-        completion()
     }
 }
