@@ -9,8 +9,8 @@ import UIKit
 
 struct CatExploreResData: Codable, CustomStringConvertible {
     
-    let id: String?
-    let imageUrl: String?
+    var id: String?
+    var imageUrl: String?
 
     private enum CodingKeys: String, CodingKey {
         case id

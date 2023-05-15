@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 final class CatCVCell: UICollectionViewCell {
 
@@ -15,6 +16,13 @@ final class CatCVCell: UICollectionViewCell {
     
     fileprivate lazy var imageView = UIImageView().then {
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
+    }
+
+    fileprivate var imageUrl: String? {
+        didSet {
+            loadImage()
+        }
     }
     
     override init(frame: CGRect) {
@@ -26,6 +34,13 @@ final class CatCVCell: UICollectionViewCell {
         
     }
     
+    // 셀이 재사용되기 전에 호출되는 메서드
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // 일반적으로 이미지가 바뀌는 것처럼 보이는 현상을 없애기 위해서 실행
+        self.imageView.image = nil
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -33,8 +48,16 @@ final class CatCVCell: UICollectionViewCell {
 
 // MARK: - Getter, Setter 모음
 extension CatCVCell {
-    func setImageView(_ image: UIImage) {
-        self.imageView.image = image
+    func setImageUrl(_ url: String) {
+        self.imageUrl = url
+    }
+}
+
+extension CatCVCell {
+    private func loadImage() {
+        imageView.layer.cornerRadius = 10
+        guard let urlString = self.imageUrl, let url = URL(string: urlString)  else { return }
+        imageView.kf.setImage(with: url)
     }
 }
 

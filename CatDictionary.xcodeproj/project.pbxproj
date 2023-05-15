@@ -20,7 +20,6 @@
 		3D983A2A2A0A4118000675A1 /* BadgeGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A292A0A4118000675A1 /* BadgeGroupV.swift */; };
 		3DB0C9E72A08B37E00A234A0 /* CatCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9E62A08B37E00A234A0 /* CatCVCell.swift */; };
 		3DB0C9E92A08D8BD00A234A0 /* SearchBarV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9E82A08D8BD00A234A0 /* SearchBarV.swift */; };
-		3DB0C9EB2A08FA4000A234A0 /* CatGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C9EA2A08FA4000A234A0 /* CatGroupV.swift */; };
 		3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768012A07B364009AFB08 /* AppDelegate.swift */; };
 		3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768032A07B364009AFB08 /* SceneDelegate.swift */; };
 		3DB768062A07B364009AFB08 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768052A07B364009AFB08 /* ExploreVC.swift */; };
@@ -38,6 +37,7 @@
 		3DB768492A07C1E8009AFB08 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768482A07C1E8009AFB08 /* UploadVC.swift */; };
 		3DB7684C2A07C233009AFB08 /* MyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684B2A07C233009AFB08 /* MyListVC.swift */; };
 		3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684D2A07C248009AFB08 /* StarListVC.swift */; };
+		3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF0D83B2A12551E00528983 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,6 @@
 		3D983A292A0A4118000675A1 /* BadgeGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeGroupV.swift; sourceTree = "<group>"; };
 		3DB0C9E62A08B37E00A234A0 /* CatCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCVCell.swift; sourceTree = "<group>"; };
 		3DB0C9E82A08D8BD00A234A0 /* SearchBarV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarV.swift; sourceTree = "<group>"; };
-		3DB0C9EA2A08FA4000A234A0 /* CatGroupV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatGroupV.swift; sourceTree = "<group>"; };
 		3DB767FE2A07B364009AFB08 /* CatDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB768012A07B364009AFB08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DB768032A07B364009AFB08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 				3DB768452A07B9BF009AFB08 /* Alamofire in Frameworks */,
 				3DB7683F2A07B928009AFB08 /* Then in Frameworks */,
 				3DB768422A07B94E009AFB08 /* SnapKit in Frameworks */,
+				3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +220,6 @@
 			children = (
 				3DB0C9E52A088A6300A234A0 /* Cells */,
 				3DB0C9E82A08D8BD00A234A0 /* SearchBarV.swift */,
-				3DB0C9EA2A08FA4000A234A0 /* CatGroupV.swift */,
 				3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */,
 				3D983A292A0A4118000675A1 /* BadgeGroupV.swift */,
 			);
@@ -266,6 +265,7 @@
 				3DB768412A07B94E009AFB08 /* SnapKit */,
 				3DB768442A07B9BF009AFB08 /* Alamofire */,
 				3D983A252A0A35B7000675A1 /* Fakery */,
+				3DF0D83B2A12551E00528983 /* Kingfisher */,
 			);
 			productName = CatDictionary;
 			productReference = 3DB767FE2A07B364009AFB08 /* CatDictionary.app */;
@@ -344,6 +344,7 @@
 				3DB768402A07B94E009AFB08 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				3DB768432A07B9BF009AFB08 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */,
+				3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3DB767FF2A07B364009AFB08 /* Products */;
 			projectDirPath = "";
@@ -405,7 +406,6 @@
 				3DB768382A07B49E009AFB08 /* UIView+Ext.swift in Sources */,
 				3DB0C9E92A08D8BD00A234A0 /* SearchBarV.swift in Sources */,
 				3DB768022A07B364009AFB08 /* AppDelegate.swift in Sources */,
-				3DB0C9EB2A08FA4000A234A0 /* CatGroupV.swift in Sources */,
 				3D26B93F2A0CC82F00EAB059 /* infinitCatGroupV.swift in Sources */,
 				3DB768042A07B364009AFB08 /* SceneDelegate.swift in Sources */,
 				3DB768362A07B486009AFB08 /* UIViewController+Ext.swift in Sources */,
@@ -790,6 +790,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -812,6 +820,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3DB768432A07B9BF009AFB08 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3DF0D83B2A12551E00528983 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

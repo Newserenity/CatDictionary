@@ -20,9 +20,9 @@ class UploadVC: UIViewController {
     }
     fileprivate lazy var imageView = UIImageView().then {
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
         $0.backgroundColor = .white
         $0.image = UIImage(systemName: "camera.on.rectangle")
-        $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 10
     }
     fileprivate lazy var centerView = UIView()
