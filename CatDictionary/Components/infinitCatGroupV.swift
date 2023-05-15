@@ -30,7 +30,7 @@ final class infinitCatGroupV: UIView {
     
     override func layoutSubviews() {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7)
+        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7 + 40)
         collectionView.collectionViewLayout = flowLayout
         collectionView.showsVerticalScrollIndicator = false
     }

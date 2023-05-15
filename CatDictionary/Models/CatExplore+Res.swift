@@ -18,7 +18,8 @@ struct CatExploreResData: Codable {
     }
     
 //     READ ME
-//     to use this property confirm {CustomStringConvertible} PROTOCOL
+//     To use this property confirm {CustomStringConvertible} PROTOCOL
+    
 //    var description: String {
 //        return "id : \(id ?? "nil") imageUrl : \(imageUrl ?? "nil")"
 //    }

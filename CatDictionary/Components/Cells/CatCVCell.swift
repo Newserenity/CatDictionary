@@ -15,8 +15,19 @@ final class CatCVCell: UICollectionViewCell {
     fileprivate lazy var imageView = UIImageView().then {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = 10
     }
-
+    
+    private var config = UIButton.Configuration.plain()
+    fileprivate lazy var starButton = UIButton().then {
+        $0.addBlurEffect(cornerRadius: 10)
+        $0.addTarget(self, action: #selector(btnPressed), for: .touchUpInside)
+        config.title = "✨STAR!"
+        config.baseBackgroundColor = .systemGray3.withAlphaComponent(0.75)
+        config.baseForegroundColor = .systemGray6
+        $0.configuration = self.config
+    }
+    
     fileprivate var imageUrl: String? {
         didSet {
             loadImage()
@@ -31,6 +42,8 @@ final class CatCVCell: UICollectionViewCell {
         configAutolayout()
         
     }
+    
+    @objc func btnPressed() {}
     
     // 셀이 재사용되기 전에 호출되는 메서드
     override func prepareForReuse() {
@@ -53,7 +66,6 @@ extension CatCVCell {
 
 extension CatCVCell {
     private func loadImage() {
-        imageView.layer.cornerRadius = 10
         guard let urlString = self.imageUrl, let url = URL(string: urlString)  else { return }
         imageView.kf.setImage(with: url)
     }
@@ -81,14 +93,20 @@ extension CatCVCell {
 extension CatCVCell {
     fileprivate func configAddSubview() {
         addSubview(imageView)
+        addSubview(starButton)
     }
 }
 
 // MARK: - AutoLayout setting
 extension CatCVCell {
     fileprivate func configAutolayout() {
-        imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        imageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        starButton.snp.makeConstraints {
+            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
         }
     }
 }
