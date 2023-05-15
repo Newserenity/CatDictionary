@@ -12,7 +12,7 @@ import SnapKit
 final class BadgeGroupV: UIView {
     
     // {{endpoint}}v1/categories 에서 fetch 예정
-    fileprivate let catsArr = ["boxes", "clothes", "hats", "sinks", "space", "sunglasses", "ties"]
+    fileprivate var categoryArr: CategoryRes = []
     
     private let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
@@ -34,17 +34,26 @@ final class BadgeGroupV: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+}
+
+// MARK: - Getter, Setter 모음
+extension BadgeGroupV {
+    public func setCategoryArr(_ arr: CategoryRes) {
+        self.categoryArr = arr
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout (collectionView의 전체적인 레이아웃 설정)
 extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let category = catsArr[indexPath.row]
+        let category = categoryArr[indexPath.row].categoryName ?? "defulat"
         
         // 나중에 사용하고있는 폰트의 크기값으로 변경
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
         
-        // 현재 cateArr값안에 있는 String에 대한 값의 사이즈를 가져옴
+        // 현재 categoryArr값안에 있는 String에 대한 값의 사이즈를 가져옴
         let categorySize = category.size(withAttributes: attributes as [NSAttributedString.Key: Any])
         
         /*
@@ -76,7 +85,7 @@ extension BadgeGroupV {
     collectionView.delegate = self
         
     // regist Cell
-        collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: BadgeTVCell.identifier)
+        collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: IDENTIFIER.BADGE_TV_CELL)
     }
 }
 
@@ -103,13 +112,13 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return catsArr.count
+        return categoryArr.count
     }
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BadgeTVCell.identifier, for: indexPath) as! BadgeTVCell
-        cell.setTitleLabel(catsArr[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER.BADGE_TV_CELL, for: indexPath) as! BadgeTVCell
+        cell.setTitleLabel(categoryArr[indexPath.row].categoryName!)
         
         return cell
     }

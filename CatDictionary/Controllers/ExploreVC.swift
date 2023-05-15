@@ -12,7 +12,7 @@ import SnapKit
 class ExploreVC: UIViewController {
     
     fileprivate let searchBar = SearchBarV()
-    fileprivate let badgeBar = BadgeGroupV.generateBadgeComponentsView()
+    fileprivate let badgeBar = BadgeGroupV()
     fileprivate let myCatList = infinitCatGroupV()
     
     // Life cycle
@@ -27,6 +27,10 @@ class ExploreVC: UIViewController {
         
         NetworkManager.shared.fetchMainCatList { res in
             self.myCatList.setCatsArr(res)
+        }
+        
+        NetworkManager.shared.fetchCategoty { res in
+            self.badgeBar.setCategoryArr(res)
         }
     }
     

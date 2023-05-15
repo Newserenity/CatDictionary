@@ -38,6 +38,7 @@
 		3DB7684C2A07C233009AFB08 /* MyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684B2A07C233009AFB08 /* MyListVC.swift */; };
 		3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684D2A07C248009AFB08 /* StarListVC.swift */; };
 		3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF0D83B2A12551E00528983 /* Kingfisher */; };
+		3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83D2A12607300528983 /* Category+Res.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		3DB768482A07C1E8009AFB08 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		3DB7684B2A07C233009AFB08 /* MyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListVC.swift; sourceTree = "<group>"; };
 		3DB7684D2A07C248009AFB08 /* StarListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarListVC.swift; sourceTree = "<group>"; };
+		3DF0D83D2A12607300528983 /* Category+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Res.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */,
+				3DF0D83D2A12607300528983 /* Category+Res.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D26B9432A0E3F7700EAB059 /* NetworkManager.swift in Sources */,
+				3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */,
 				3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */,
 				3D26B9412A0D290700EAB059 /* Constant.swift in Sources */,
 				3DB7680C2A07B364009AFB08 /* CatDictionary.xcdatamodeld in Sources */,

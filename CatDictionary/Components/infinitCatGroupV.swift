@@ -11,7 +11,7 @@ import Then
 
 final class infinitCatGroupV: UIView {
     
-    fileprivate var catsArr:CatExploreRes = []
+    fileprivate var catsArr: CatExploreRes = []
 
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
@@ -58,7 +58,7 @@ extension infinitCatGroupV {
     collectionView.delegate = self
         
     // regist Cell
-        collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: CatCVCell.identifier)
+        collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
     }
 }
 
@@ -89,7 +89,7 @@ extension infinitCatGroupV: UICollectionViewDataSource, UICollectionViewDelegate
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCVCell.identifier, for: indexPath) as! CatCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER.CAT_CV_CELL, for: indexPath) as! CatCVCell
 
         cell.setImageUrl(catsArr[indexPath.row].imageUrl!)
         

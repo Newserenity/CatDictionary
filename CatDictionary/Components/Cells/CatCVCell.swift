@@ -11,8 +11,6 @@ import Then
 import Kingfisher
 
 final class CatCVCell: UICollectionViewCell {
-
-    static let identifier = "catCVCell" // identifier
     
     fileprivate lazy var imageView = UIImageView().then {
         $0.clipsToBounds = true
@@ -37,7 +35,7 @@ final class CatCVCell: UICollectionViewCell {
     // 셀이 재사용되기 전에 호출되는 메서드
     override func prepareForReuse() {
         super.prepareForReuse()
-        // 일반적으로 이미지가 바뀌는 것처럼 보이는 현상을 없애기 위해서 실행
+        // 이미지가 바뀌는 것처럼 보이는 현상을 없애기 위해서 실행
         self.imageView.image = nil
     }
     

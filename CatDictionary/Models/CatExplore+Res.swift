@@ -5,9 +5,9 @@
 //  Created by Jayden Jang on 2023/05/13.
 //
 
-import UIKit
+import Foundation
 
-struct CatExploreResData: Codable, CustomStringConvertible {
+struct CatExploreResData: Codable {
     
     var id: String?
     var imageUrl: String?
@@ -17,9 +17,11 @@ struct CatExploreResData: Codable, CustomStringConvertible {
         case imageUrl = "url"
     }
     
-    var description: String {
-        return "id : \(id ?? "nil") imageUrl : \(imageUrl ?? "nil")"
-    }
+//     READ ME
+//     to use this property confirm {CustomStringConvertible} PROTOCOL
+//    var description: String {
+//        return "id : \(id ?? "nil") imageUrl : \(imageUrl ?? "nil")"
+//    }
 }
 
 typealias CatExploreRes = [CatExploreResData]

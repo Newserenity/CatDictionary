@@ -10,8 +10,6 @@ import Then
 
 final class BadgeTVCell: UICollectionViewCell {
     
-    static let identifier = "badgeTVCell"
-    
     fileprivate lazy var selectedMenuItem: String = "Deafalt"
     fileprivate lazy var titleLablel = UILabel().then {
         $0.text = selectedMenuItem
@@ -23,13 +21,6 @@ final class BadgeTVCell: UICollectionViewCell {
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 15 //높이에 따라 동적으로 변하게 수정
     }
-    
-    //FIXME: 굳이 View를 만들지 않아도, UILabel안에서 BackgroundColor값과 cornerRadius값을 지정할 수 있음!!!!!! 해당View는 무의미!
-//    fileprivate lazy var titleLablelBg = UIView().then {
-//        $0.backgroundColor = .systemTeal
-//        $0.layer.masksToBounds = true
-//        $0.layer.cornerRadius = 15 //높이에 따라 동적으로 변하게 수정
-//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
