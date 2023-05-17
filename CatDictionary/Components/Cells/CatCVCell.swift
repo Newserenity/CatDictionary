@@ -13,6 +13,7 @@ import Kingfisher
 final class CatCVCell: UICollectionViewCell {
     
     fileprivate lazy var imageView = UIImageView().then {
+        $0.backgroundColor = .systemGray6
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 10
@@ -43,7 +44,9 @@ final class CatCVCell: UICollectionViewCell {
         
     }
     
-    @objc func btnPressed() {}
+    @objc func btnPressed() {
+        
+    }
     
     // 셀이 재사용되기 전에 호출되는 메서드
     override func prepareForReuse() {

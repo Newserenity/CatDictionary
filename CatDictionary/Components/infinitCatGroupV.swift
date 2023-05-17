@@ -15,6 +15,10 @@ final class infinitCatGroupV: UIView {
 
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
+    fileprivate lazy var refresh = UIRefreshControl().then {
+        $0.addTarget(self, action: #selector( handleRefreshControl) , for: .valueChanged)
+        }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -22,6 +26,8 @@ final class infinitCatGroupV: UIView {
         configUI()
         configAddSubview()
         configLayout()
+        
+        collectionView.refreshControl = refresh
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +40,19 @@ final class infinitCatGroupV: UIView {
         collectionView.collectionViewLayout = flowLayout
         collectionView.showsVerticalScrollIndicator = false
     }
+    
+    @objc func handleRefreshControl() {
+       // Update your content…
+        NetworkManager.shared.fetchMainCatList { res in
+            self.catsArr = res
+            self.collectionView.reloadData()
+        }
+
+       // Dismiss the refresh control.
+       DispatchQueue.main.async {
+           self.collectionView.refreshControl?.endRefreshing()
+       }
+    }
 }
 
 // MARK: - Getter, Setter 모음
@@ -42,6 +61,11 @@ extension infinitCatGroupV {
         self.catsArr = arr
         collectionView.reloadData()
     }
+    
+    //setter 설정방법 찾기
+//    public func setCollectionView(_ data: UIRefreshControl) {
+//        self.collectionView.refreshControl = data
+//    }
 }
 
 // MARK: - self UI 관련
@@ -84,6 +108,12 @@ extension infinitCatGroupV: UICollectionViewDataSource, UICollectionViewDelegate
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if catsArr.count == 0 {
+//            return 21
+//        } else {
+//            return catsArr.count
+//        }
+        
         return catsArr.count
     }
     

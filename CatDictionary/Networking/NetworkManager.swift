@@ -33,4 +33,11 @@ final class NetworkManager {
             completion(safeValue)
         }
     }
+    
+    func fetchStarList(completion: @escaping (_ : StarListRes)->Void) {
+        session.request(Router.starList).responseDecodable(of: StarListRes.self) { res in
+            guard let safeValue = res.value else { return }
+            completion(safeValue)
+        }
+    }
 }

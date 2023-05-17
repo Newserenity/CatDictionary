@@ -18,7 +18,12 @@ class StarListVC: UIViewController {
         configAddSubview()
         configLayout()
         configNavbar()
+        
+//        NetworkManager.shared.fetchStarList { res in
+//            self.myCatList.setCatsArr(res)
+//        }
     }
+    
 }
 
 // MARK: - addSubview 관련
@@ -32,9 +37,9 @@ extension StarListVC {
 extension StarListVC {
     fileprivate func configLayout() {
         myCatList.snp.makeConstraints {
+            $0.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
             $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
             $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
-            $0.verticalEdges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
 }

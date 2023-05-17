@@ -40,6 +40,7 @@
 		3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF0D83B2A12551E00528983 /* Kingfisher */; };
 		3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83D2A12607300528983 /* Category+Res.swift */; };
 		3DF0D8402A126F9600528983 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */; };
+		3DF0D8422A14C15F00528983 /* StarList+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D8412A14C15F00528983 /* StarList+Res.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		3DB7684D2A07C248009AFB08 /* StarListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarListVC.swift; sourceTree = "<group>"; };
 		3DF0D83D2A12607300528983 /* Category+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Res.swift"; sourceTree = "<group>"; };
 		3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		3DF0D8412A14C15F00528983 /* StarList+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarList+Res.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */,
+				3DF0D8412A14C15F00528983 /* StarList+Res.swift */,
 				3DF0D83D2A12607300528983 /* Category+Res.swift */,
 			);
 			path = Models;
@@ -395,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF0D8422A14C15F00528983 /* StarList+Res.swift in Sources */,
 				3D26B9432A0E3F7700EAB059 /* NetworkManager.swift in Sources */,
 				3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */,
 				3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */,
