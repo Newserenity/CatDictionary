@@ -9,7 +9,7 @@ import UIKit
 
 class StarListVC: UIViewController {
 
-    fileprivate let myCatList = infinitCatGroupV()
+    fileprivate let starListTV = StarListTV()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,10 @@ class StarListVC: UIViewController {
         configLayout()
         configNavbar()
         
-//        NetworkManager.shared.fetchStarList { res in
-//            self.myCatList.setCatsArr(res)
-//        }
+        NetworkManager.shared.fetchStarList { res in
+            self.starListTV.starListArr = res
+            self.starListTV.reloadData()
+        }
     }
     
 }
@@ -29,14 +30,14 @@ class StarListVC: UIViewController {
 // MARK: - addSubview 관련
 extension StarListVC {
     fileprivate func configAddSubview() {
-        self.view.addSubview(myCatList)
+        self.view.addSubview(starListTV)
     }
 }
 
 // MARK: - autolayout 관련
 extension StarListVC {
     fileprivate func configLayout() {
-        myCatList.snp.makeConstraints {
+        starListTV.snp.makeConstraints {
             $0.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
             $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
             $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)

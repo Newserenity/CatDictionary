@@ -9,48 +9,47 @@ import UIKit
 import SnapKit
 import Then
 
-final class infinitCatGroupV: UIView {
+final class infinitCatGroupV: UICollectionView {
     
     fileprivate var catsArr: CatExploreRes = []
-
-    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    
     fileprivate lazy var refresh = UIRefreshControl().then {
-        $0.addTarget(self, action: #selector( handleRefreshControl) , for: .valueChanged)
-        }
+        $0.addTarget(self, action: #selector(handleRefreshControl) , for: .valueChanged)
+    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-                
+    private var flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    
+    // Life Cycle
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
+        
         configDelegate()
         configUI()
-        configAddSubview()
         configLayout()
-        
-        collectionView.refreshControl = refresh
+
+        self.refreshControl = refresh
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
-        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7 + 40)
-        collectionView.collectionViewLayout = flowLayout
-        collectionView.showsVerticalScrollIndicator = false
+        self.collectionViewLayout = flowLayout
+        self.showsVerticalScrollIndicator = false
     }
     
     @objc func handleRefreshControl() {
        // Update your content…
         NetworkManager.shared.fetchMainCatList { res in
             self.catsArr = res
-            self.collectionView.reloadData()
+            self.reloadData()
         }
 
        // Dismiss the refresh control.
        DispatchQueue.main.async {
-           self.collectionView.refreshControl?.endRefreshing()
+           self.refreshControl?.endRefreshing()
        }
     }
 }
@@ -59,7 +58,7 @@ final class infinitCatGroupV: UIView {
 extension infinitCatGroupV {
     public func setCatsArr(_ arr: CatExploreRes) {
         self.catsArr = arr
-        collectionView.reloadData()
+        self.reloadData()
     }
     
     //setter 설정방법 찾기
@@ -78,26 +77,20 @@ extension infinitCatGroupV {
 // MARK: - 대리자 설정
 extension infinitCatGroupV {
     fileprivate func configDelegate() {
-    collectionView.dataSource = self
-    collectionView.delegate = self
+        self.dataSource = self
+        self.delegate = self
         
     // regist Cell
-        collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
+        self.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
     }
 }
 
-// MARK: - addSubview 관련
-extension infinitCatGroupV {
-    fileprivate func configAddSubview() {
-        self.addSubview(collectionView)
-    }
-}
 
 // MARK: - autoLayout 관련
 extension infinitCatGroupV {
     fileprivate func configLayout() {
         
-        collectionView.snp.makeConstraints {
+        self.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }

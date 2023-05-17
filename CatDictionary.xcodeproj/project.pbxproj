@@ -37,6 +37,8 @@
 		3DB768492A07C1E8009AFB08 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB768482A07C1E8009AFB08 /* UploadVC.swift */; };
 		3DB7684C2A07C233009AFB08 /* MyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684B2A07C233009AFB08 /* MyListVC.swift */; };
 		3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7684D2A07C248009AFB08 /* StarListVC.swift */; };
+		3DBD4B3B2A14D89000FC1EA0 /* StarListTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD4B3A2A14D89000FC1EA0 /* StarListTVCell.swift */; };
+		3DBD4B3D2A15150900FC1EA0 /* StarListTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD4B3C2A15150900FC1EA0 /* StarListTV.swift */; };
 		3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF0D83B2A12551E00528983 /* Kingfisher */; };
 		3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83D2A12607300528983 /* Category+Res.swift */; };
 		3DF0D8402A126F9600528983 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */; };
@@ -91,6 +93,8 @@
 		3DB768482A07C1E8009AFB08 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		3DB7684B2A07C233009AFB08 /* MyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListVC.swift; sourceTree = "<group>"; };
 		3DB7684D2A07C248009AFB08 /* StarListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarListVC.swift; sourceTree = "<group>"; };
+		3DBD4B3A2A14D89000FC1EA0 /* StarListTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarListTVCell.swift; sourceTree = "<group>"; };
+		3DBD4B3C2A15150900FC1EA0 /* StarListTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarListTV.swift; sourceTree = "<group>"; };
 		3DF0D83D2A12607300528983 /* Category+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Res.swift"; sourceTree = "<group>"; };
 		3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		3DF0D8412A14C15F00528983 /* StarList+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarList+Res.swift"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			children = (
 				3DB0C9E62A08B37E00A234A0 /* CatCVCell.swift */,
 				3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */,
+				3DBD4B3A2A14D89000FC1EA0 /* StarListTVCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				3DB0C9E82A08D8BD00A234A0 /* SearchBarV.swift */,
 				3D26B93E2A0CC82F00EAB059 /* infinitCatGroupV.swift */,
 				3D983A292A0A4118000675A1 /* BadgeGroupV.swift */,
+				3DBD4B3C2A15150900FC1EA0 /* StarListTV.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBD4B3D2A15150900FC1EA0 /* StarListTV.swift in Sources */,
 				3DF0D8422A14C15F00528983 /* StarList+Res.swift in Sources */,
 				3D26B9432A0E3F7700EAB059 /* NetworkManager.swift in Sources */,
 				3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */,
@@ -413,6 +420,7 @@
 				3DB768062A07B364009AFB08 /* ExploreVC.swift in Sources */,
 				3D26B9452A0E49A500EAB059 /* BaseInterceptor.swift in Sources */,
 				3D26B9492A0E8CE100EAB059 /* Router.swift in Sources */,
+				3DBD4B3B2A14D89000FC1EA0 /* StarListTVCell.swift in Sources */,
 				3DB0C9E72A08B37E00A234A0 /* CatCVCell.swift in Sources */,
 				3D983A2A2A0A4118000675A1 /* BadgeGroupV.swift in Sources */,
 				3DB768382A07B49E009AFB08 /* UIView+Ext.swift in Sources */,

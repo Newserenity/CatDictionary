@@ -11,7 +11,6 @@ import SnapKit
 
 final class BadgeGroupV: UIView {
     
-    // {{endpoint}}v1/categories 에서 fetch 예정
     fileprivate var categoryArr: CategoryRes = []
     
     private let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {

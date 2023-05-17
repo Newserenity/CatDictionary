@@ -19,45 +19,61 @@ class ExploreVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configProperty()
         configAddSubview()
         configLayout()
-        configNavbar()
         
-        self.view.backgroundColor = .white
+        configNavbar() // This Func come from  "~/extentions/UIVC+EXT"
         
-        NetworkManager.shared.fetchMainCatList { res in
-            self.myCatList.setCatsArr(res)
-        }
-        
-        NetworkManager.shared.fetchCategoty { res in
-            self.badgeBar.setCategoryArr(res)
-        }
+        initNetworking()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // navbar hide setting
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         // navbar hide setting
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
-// MARK: - addSubview 관련
+// MARK: - Setting Self
+extension ExploreVC {
+    // self stored property
+    fileprivate func configProperty() {
+        self.view.backgroundColor = .white
+    }
+}
+
+// MARK: - Networing
+extension ExploreVC {
+    fileprivate func initNetworking() {
+        // fetching main catlist
+        NetworkManager.shared.fetchMainCatList { res in
+            self.myCatList.setCatsArr(res)
+        }
+        
+        // fetching categoty menu
+        NetworkManager.shared.fetchCategoty { res in
+            self.badgeBar.setCategoryArr(res)
+        }
+    }
+}
+
+// MARK: - addSubview / autolayout
 extension ExploreVC {
     fileprivate func configAddSubview() {
         self.view.addSubview(searchBar)
         self.view.addSubview(badgeBar)
         self.view.addSubview(myCatList)
     }
-}
-
-// MARK: - autolayout 관련
-extension ExploreVC {
+    
     fileprivate func configLayout() {
         searchBar.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)

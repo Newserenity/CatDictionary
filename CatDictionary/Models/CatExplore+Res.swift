@@ -3,6 +3,7 @@
 //  CatDictionary
 //
 //  Created by Jayden Jang on 2023/05/13.
+//  Last Modified by Jayden Jang on 2023/05/17.
 //
 
 import Foundation
@@ -16,13 +17,6 @@ struct CatExploreResData: Codable {
         case id
         case imageUrl = "url"
     }
-    
-//     READ ME
-//     To use this property confirm {CustomStringConvertible} PROTOCOL
-    
-//    var description: String {
-//        return "id : \(id ?? "nil") imageUrl : \(imageUrl ?? "nil")"
-//    }
 }
 
 typealias CatExploreRes = [CatExploreResData]

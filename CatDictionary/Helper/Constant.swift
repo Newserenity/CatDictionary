@@ -19,5 +19,6 @@ enum API {
 enum IDENTIFIER {
     static let CAT_CV_CELL = "catCVCell"
     static let BADGE_TV_CELL = "badgeTVCell"
+    static let STAR_LIST_TV_CELL = "starListTVCell"
 }
 
