@@ -42,7 +42,7 @@ final class StarListTVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configLayout()
+//        configLayout()
     }
     
     required init?(coder: NSCoder) {

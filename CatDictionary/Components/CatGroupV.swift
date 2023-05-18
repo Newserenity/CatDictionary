@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CatGroupV: UICollectionView {
+final class CatGroupV: UIView {
     
     fileprivate var catsArr: CatExploreRes = []
     fileprivate lazy var refresh = UIRefreshControl().then {
@@ -17,12 +17,16 @@ final class CatGroupV: UICollectionView {
     }
     
     private var flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    
+    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
+        $0.refreshControl = self.refresh
+        $0.showsVerticalScrollIndicator = false
+    }
     
     // Life Cycle
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        self.backgroundColor = .blue
         configProperty()
         configLayout()
     }
@@ -34,8 +38,7 @@ final class CatGroupV: UICollectionView {
     // layoutSubviews
     override func layoutSubviews() {
         flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7 + 40)
-        self.collectionViewLayout = flowLayout
-        self.showsVerticalScrollIndicator = false
+        self.collectionView.collectionViewLayout = flowLayout
     }
 }
 
@@ -45,12 +48,12 @@ extension CatGroupV {
        // Update your content…
         NetworkManager.shared.fetchMainCatList { res in
             self.catsArr = res
-            self.reloadData()
+            self.collectionView.reloadData()
         }
 
        // Dismiss the refresh control.
        DispatchQueue.main.async {
-           self.refreshControl?.endRefreshing()
+           self.collectionView.refreshControl?.endRefreshing()
        }
     }
 }
@@ -59,28 +62,17 @@ extension CatGroupV {
 extension CatGroupV {
     public func setCatsArr(_ arr: CatExploreRes) {
         self.catsArr = arr
-        self.reloadData()
+        self.collectionView.reloadData()
     }
 }
 
 // MARK: - configProperty
 extension CatGroupV {
     fileprivate func configProperty() {
-        self.dataSource = self
-        self.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         
-        self.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
-    }
-}
-
-
-// MARK: - autoLayout 관련
-extension CatGroupV {
-    fileprivate func configLayout() {
-        
-        self.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
     }
 }
 
@@ -101,6 +93,18 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
     }
 }
+
+// MARK: - AutoLayout setting
+extension CatGroupV {
+    fileprivate func configLayout() {
+        addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+}
+
 
 // MARK: - Preview 관련
 #if DEBUG

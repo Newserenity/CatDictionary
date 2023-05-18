@@ -16,8 +16,8 @@ final class StarListTV: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
-        configProperty()
-        configLayout()
+//        configProperty()
+//        configLayout()
     }
     
     required init?(coder: NSCoder) {

@@ -18,7 +18,7 @@ final class BadgeGroupV: UIView {
         $0.minimumLineSpacing = 5
     }
     
-    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +37,7 @@ final class BadgeGroupV: UIView {
 extension BadgeGroupV {
     public func setCategoryArr(_ arr: CategoryRes) {
         self.categoryArr = arr
-        collectionView.reloadData()
+        self.collectionView.reloadData()
     }
 }
 
