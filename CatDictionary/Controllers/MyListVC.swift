@@ -10,7 +10,7 @@ import Then
 
 class MyListVC: UIViewController {
 
-    fileprivate let myCatList = infinitCatGroupV()
+    fileprivate let myCatList = CatGroupV()
     
     override func viewDidLoad() {
         super.viewDidLoad()

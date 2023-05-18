@@ -1,41 +1,68 @@
 //
-//  CatCollectionView.swift
+//  CatGroupV.swift
 //  CatDictionary
 //
-//  Created by Jayden Jang on 2023/05/08.
+//  Created by Jayden Jang on 2023/05/18.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-final class CatGroupV: UIView {
+final class CatGroupV: UICollectionView {
     
-    fileprivate let catsArr = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6"]
-    fileprivate lazy var subtitle = UILabel().then {
-        $0.text = "T'ekaaluk"
-        $0.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+    fileprivate var catsArr: CatExploreRes = []
+    fileprivate lazy var refresh = UIRefreshControl().then {
+        $0.addTarget(self, action: #selector(handleRefreshControl) , for: .valueChanged)
     }
-    fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-                
+    private var flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    
+    // Life Cycle
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
+        
         configDelegate()
         configUI()
-        configAddSubview()
         configLayout()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
-        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 8, height: self.frame.width/3 - 8)
-        collectionView.collectionViewLayout = flowLayout
+        flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7 + 40)
+        self.collectionViewLayout = flowLayout
+        self.showsVerticalScrollIndicator = false
     }
+    
+    @objc func handleRefreshControl() {
+       // Update your content…
+        NetworkManager.shared.fetchMainCatList { res in
+            self.catsArr = res
+            self.reloadData()
+        }
+
+       // Dismiss the refresh control.
+       DispatchQueue.main.async {
+           self.refreshControl?.endRefreshing()
+       }
+    }
+}
+
+// MARK: - Getter, Setter 모음
+extension CatGroupV {
+    public func setCatsArr(_ arr: CatExploreRes) {
+        self.catsArr = arr
+        self.reloadData()
+    }
+    
+    //setter 설정방법 찾기
+//    public func setCollectionView(_ data: UIRefreshControl) {
+//        self.collectionView.refreshControl = data
+//    }
 }
 
 // MARK: - self UI 관련
@@ -48,35 +75,22 @@ extension CatGroupV {
 // MARK: - 대리자 설정
 extension CatGroupV {
     fileprivate func configDelegate() {
-    collectionView.dataSource = self
-    collectionView.delegate = self
+        self.dataSource = self
+        self.delegate = self
         
     // regist Cell
-        collectionView.register(CatCVCell.self, forCellWithReuseIdentifier: CatCVCell.identifier)
+        self.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
     }
 }
 
-// MARK: - addSubview 관련
-extension CatGroupV {
-    fileprivate func configAddSubview() {
-        self.addSubview(collectionView)
-        self.addSubview(subtitle)
-    }
-}
 
 // MARK: - autoLayout 관련
 extension CatGroupV {
     fileprivate func configLayout() {
         
-        collectionView.snp.makeConstraints {
-            $0.bottom.left.right.equalToSuperview()
-            $0.top.equalTo(subtitle.snp.bottom).offset(10)
+        self.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        
-        subtitle.snp.makeConstraints {
-            $0.top.left.equalToSuperview().offset(10)
-        }
-        
     }
 }
 
@@ -85,23 +99,27 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if catsArr.count == 0 {
+//            return 21
+//        } else {
+//            return catsArr.count
+//        }
+        
         return catsArr.count
     }
     
     // 셀의 구성(셀에 표시하고자 하는 데이터 표시)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCVCell.identifier, for: indexPath) as! CatCVCell
-        
-        cell.setImageView(UIImage(systemName: "person.fill")!)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER.CAT_CV_CELL, for: indexPath) as! CatCVCell
+
+        cell.setImageUrl(catsArr[indexPath.row].imageUrl!)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, "path : \(indexPath)")
     }
 }
-
 
 // MARK: - Preview 관련
 #if DEBUG
@@ -112,7 +130,6 @@ struct CatGroupV_Previews: PreviewProvider {
     static var previews: some View {
         CatGroupV()
             .getPreview()
-            .frame(width: 400, height: 330)
             .previewLayout(.sizeThatFits)
     }
 }

@@ -13,7 +13,7 @@ class ExploreVC: UIViewController {
     //test
     fileprivate let searchBar = SearchBarV()
     fileprivate let badgeBar = BadgeGroupV()
-    fileprivate let myCatList = infinitCatGroupV()
+    fileprivate let myCatList = CatGroupV()
     
     // Life cycle
     override func viewDidLoad() {
