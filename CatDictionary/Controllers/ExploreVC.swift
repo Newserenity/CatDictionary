@@ -10,7 +10,7 @@ import Then
 import SnapKit
 
 class ExploreVC: UIViewController {
-    
+    //test
     fileprivate let searchBar = SearchBarV()
     fileprivate let badgeBar = BadgeGroupV()
     fileprivate let myCatList = infinitCatGroupV()
