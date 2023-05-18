@@ -10,7 +10,7 @@ import Then
 import SnapKit
 
 class ExploreVC: UIViewController {
-    //test
+
     fileprivate let searchBar = SearchBarV()
     fileprivate let badgeBar = BadgeGroupV()
     fileprivate let myCatList = CatGroupV()
@@ -20,7 +20,6 @@ class ExploreVC: UIViewController {
         super.viewDidLoad()
         
         configProperty()
-        configAddSubview()
         configLayout()
         
         configNavbar() // This Func come from  "~/extentions/UIVC+EXT"
@@ -30,14 +29,12 @@ class ExploreVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // navbar hide setting
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         // navbar hide setting
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -67,14 +64,12 @@ extension ExploreVC {
 }
 
 // MARK: - addSubview / autolayout
-extension ExploreVC {
-    fileprivate func configAddSubview() {
+extension ExploreVC {    
+    fileprivate func configLayout() {
         self.view.addSubview(searchBar)
         self.view.addSubview(badgeBar)
         self.view.addSubview(myCatList)
-    }
-    
-    fileprivate func configLayout() {
+        
         searchBar.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.left.equalToSuperview().offset(10)

@@ -25,7 +25,6 @@ final class BadgeTVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configAddSubview()
         configLayout()
     }
     
@@ -41,26 +40,12 @@ extension BadgeTVCell {
     }
 }
 
-// MARK: - static 메소드 관련
-extension BadgeTVCell {
-    
-    /// 벳지 만들기
-    /// - Returns: 만들어진 벳지
-    static func generateMyCardView() -> UICollectionViewCell {
-        return BadgeTVCell()
-    }
-}
 
-// MARK: - addSubview 관련
-extension BadgeTVCell {
-    fileprivate func configAddSubview() {
-        addSubview(titleLablel)
-    }
-}
-
-// MARK: - Autolayout 관련
+// MARK: - Addsubview / Autolayout 관련
 extension BadgeTVCell {
     fileprivate func configLayout() {
+        addSubview(titleLablel)
+        
         titleLablel.snp.makeConstraints {
             // 여백 지정값의 경우 collectionView FlowLayoutDelegate에서 지정해줄거니 제약조건을 모두 SuperView에 맞춤
             $0.edges.equalToSuperview()

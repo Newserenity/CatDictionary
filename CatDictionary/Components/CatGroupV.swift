@@ -23,8 +23,7 @@ final class CatGroupV: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         
-        configDelegate()
-        configUI()
+        configProperty()
         configLayout()
     }
     
@@ -32,13 +31,17 @@ final class CatGroupV: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // layoutSubviews
     override func layoutSubviews() {
         flowLayout.itemSize = CGSize(width: self.frame.width/3 - 7, height: self.frame.width/3 - 7 + 40)
         self.collectionViewLayout = flowLayout
         self.showsVerticalScrollIndicator = false
     }
-    
-    @objc func handleRefreshControl() {
+}
+
+// MARK: - event handler
+extension CatGroupV {
+    @objc fileprivate func handleRefreshControl() {
        // Update your content…
         NetworkManager.shared.fetchMainCatList { res in
             self.catsArr = res
@@ -58,27 +61,14 @@ extension CatGroupV {
         self.catsArr = arr
         self.reloadData()
     }
-    
-    //setter 설정방법 찾기
-//    public func setCollectionView(_ data: UIRefreshControl) {
-//        self.collectionView.refreshControl = data
-//    }
 }
 
-// MARK: - self UI 관련
+// MARK: - configProperty
 extension CatGroupV {
-    fileprivate func configUI() {
-        
-    }
-}
-
-// MARK: - 대리자 설정
-extension CatGroupV {
-    fileprivate func configDelegate() {
+    fileprivate func configProperty() {
         self.dataSource = self
         self.delegate = self
         
-    // regist Cell
         self.register(CatCVCell.self, forCellWithReuseIdentifier: IDENTIFIER.CAT_CV_CELL)
     }
 }
@@ -99,12 +89,6 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // 컬렉션뷰에 몇개의 데이터를 표시할 것인지
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if catsArr.count == 0 {
-//            return 21
-//        } else {
-//            return catsArr.count
-//        }
-        
         return catsArr.count
     }
     
@@ -115,9 +99,6 @@ extension CatGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setImageUrl(catsArr[indexPath.row].imageUrl!)
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
 

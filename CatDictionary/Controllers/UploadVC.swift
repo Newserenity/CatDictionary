@@ -46,21 +46,27 @@ class UploadVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configUI()
-        configAddSubview()
+        configProperty()
         configLayout()
         
         configNavbar()
-        
-        self.view.backgroundColor = .white
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate
 extension UploadVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
-    {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         imageView.image = (info[.originalImage] as? UIImage)
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Setting Self
+extension UploadVC {
+    // self stored property
+    fileprivate func configProperty() {
+        self.title = "Upload"
+        self.view.backgroundColor = .white
     }
 }
 
@@ -75,21 +81,15 @@ extension UploadVC {
     }
 }
 
-// MARK: - addSubview 관련
+// MARK: - autolayout 관련
 extension UploadVC {
-    fileprivate func configAddSubview() {
+    fileprivate func configLayout() {
         self.view.addSubview(centerView)
         self.view.addSubview(constructionLabel)
         self.view.addSubview(button)
         centerView.addSubview(textLabel)
         centerView.addSubview(imageView)
         
-    }
-}
-
-// MARK: - autolayout 관련
-extension UploadVC {
-    fileprivate func configLayout() {
         centerView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(100)
@@ -119,13 +119,7 @@ extension UploadVC {
     }
 }
 
-// MARK: - self UI 세팅
-extension UploadVC {
-    fileprivate func configUI() {
-        self.view.backgroundColor = .systemGray6
-        self.title = "Upload"
-    }
-}
+
 
 // MARK: - preview 관련
 #if DEBUG

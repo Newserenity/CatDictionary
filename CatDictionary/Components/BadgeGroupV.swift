@@ -16,7 +16,6 @@ final class BadgeGroupV: UIView {
     private let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.minimumLineSpacing = 5
-//        $0.sectionInset = UIEdgeInsets.init(top: 10 , left: 20, bottom: 10, right: 20)
     }
     
     fileprivate lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -24,10 +23,8 @@ final class BadgeGroupV: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configDelegate()
-        configAddSubview()
+        configProperty()
         configLayout()
-        configCV()
     }
     
     required init?(coder: NSCoder) {
@@ -48,56 +45,33 @@ extension BadgeGroupV {
 extension BadgeGroupV: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let category = categoryArr[indexPath.row].categoryName ?? "defulat"
-        
+    
         // 나중에 사용하고있는 폰트의 크기값으로 변경
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
         
         // 현재 categoryArr값안에 있는 String에 대한 값의 사이즈를 가져옴
         let categorySize = category.size(withAttributes: attributes as [NSAttributedString.Key: Any])
         
-        /*
-          사이즈값에 대한 여백 설정 양옆 15씩 위아래 5씩
-          BadgeTVCell에 있는 Label의 autoLayout을 여기서 줬다고 생각하면 편함
-         */
         return CGSize(width: categorySize.width + 15 + 15, height: 20 + 5 + 5)
     }
 }
 
-// MARK: - collectionView 설정 관련
+// MARK: - Setting Self
 extension BadgeGroupV {
-    fileprivate func configCV() {
-        collectionView.showsHorizontalScrollIndicator = false
-    }
-}
-
-// MARK: - Self UI setting
-extension BadgeGroupV {
-    fileprivate func configUI() {
-        
-    }
-}
-
-// MARK: - Delegate setting 및 셀등록
-extension BadgeGroupV {
-    fileprivate func configDelegate() {
-    collectionView.dataSource = self
-    collectionView.delegate = self
-        
-    // regist Cell
-        collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: IDENTIFIER.BADGE_TV_CELL)
-    }
-}
-
-// MARK: - AddSubview setting
-extension BadgeGroupV {
-    fileprivate func configAddSubview() {
-        addSubview(collectionView)
+    // self stored property
+    fileprivate func configProperty() {
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.register(BadgeTVCell.self, forCellWithReuseIdentifier: IDENTIFIER.BADGE_TV_CELL)
     }
 }
 
 // MARK: - AutoLayout setting
 extension BadgeGroupV {
     fileprivate func configLayout() {
+        addSubview(collectionView)
+        
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -120,17 +94,6 @@ extension BadgeGroupV: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setTitleLabel(categoryArr[indexPath.row].categoryName!)
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, "path : \(indexPath)")
-    }
-}
-
-// MARK: - static 메소드 관련
-extension BadgeGroupV {
-    static func generateBadgeComponentsView() -> UIView {
-        return BadgeGroupV()
     }
 }
 

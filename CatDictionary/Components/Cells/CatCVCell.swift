@@ -38,13 +38,8 @@ final class CatCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configUI()
-        configAddSubview()
+        configProperty()
         configAutolayout()
-        
-    }
-    
-    @objc func btnPressed() {
         
     }
     
@@ -60,6 +55,22 @@ final class CatCVCell: UICollectionViewCell {
     }
 }
 
+// MARK: - event hander
+extension CatCVCell {
+    @objc fileprivate func btnPressed() {
+        
+    }
+}
+
+// MARK: - Setting Self
+extension CatCVCell {
+    // self stored property
+    fileprivate func configProperty() {
+        self.backgroundColor = .systemGray5
+        self.layer.cornerRadius = 10
+    }
+}
+
 // MARK: - Getter, Setter 모음
 extension CatCVCell {
     func setImageUrl(_ url: String) {
@@ -67,6 +78,7 @@ extension CatCVCell {
     }
 }
 
+// MARK: - Fetching image from url by KF
 extension CatCVCell {
     private func loadImage() {
         guard let urlString = self.imageUrl, let url = URL(string: urlString)  else { return }
@@ -74,35 +86,13 @@ extension CatCVCell {
     }
 }
 
-// MARK: - self UI 세팅
-extension CatCVCell {
-    fileprivate func configUI() {
-        self.backgroundColor = .systemGray5
-        self.layer.cornerRadius = 10
-    }
-}
-
-// MARK: - static 메소드 관련
-extension CatCVCell {
-    
-    /// Cat Cell  만들기
-    /// - Returns: Cat Cell
-    static func generateCatCollectionViewCell() -> UIView {
-        return CatCVCell()
-    }
-}
-
-// MARK: - AddSubview setting
-extension CatCVCell {
-    fileprivate func configAddSubview() {
-        addSubview(imageView)
-        addSubview(starButton)
-    }
-}
 
 // MARK: - AutoLayout setting
 extension CatCVCell {
     fileprivate func configAutolayout() {
+        addSubview(imageView)
+        addSubview(starButton)
+        
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

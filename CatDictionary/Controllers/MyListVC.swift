@@ -15,8 +15,7 @@ class MyListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configUI()
-        configAddSubview()
+        configProperty()
         configLayout()
         configNavbar()
         
@@ -24,23 +23,21 @@ class MyListVC: UIViewController {
     }
 }
 
-// MARK: - Self UI 세팅
+// MARK: - Setting Self
 extension MyListVC {
-    fileprivate func configUI() {
-        title = "MyList"
+    // self stored property
+    fileprivate func configProperty() {
+        self.title = "MyList"
+        self.view.backgroundColor = .white
     }
 }
 
-// MARK: - addSubview 관련
-extension MyListVC {
-    fileprivate func configAddSubview() {
-        self.view.addSubview(myCatList)
-    }
-}
 
 // MARK: - autolayout 관련
 extension MyListVC {
     fileprivate func configLayout() {
+        self.view.addSubview(myCatList)
+        
         myCatList.snp.makeConstraints {
             $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
             $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)

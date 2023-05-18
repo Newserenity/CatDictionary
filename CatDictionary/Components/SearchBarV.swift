@@ -38,48 +38,34 @@ final class SearchBarV: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configDelegate()
-        configUI()
-        configAddSubview()
+        configProperty()
         configLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-}
-
-// MARK: - self UI 세팅
-extension SearchBarV {
-    fileprivate func configUI() {
-
+    
+    // override touchesBegan (키보드 내리기)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBarTextFiled.resignFirstResponder()
     }
 }
 
 // MARK: - delegate 관련
 extension SearchBarV {
-    fileprivate func configDelegate() {
+    fileprivate func configProperty() {
         searchBarTextFiled.delegate = self
-    }
-}
-
-// MARK: - addSubview 관련
-extension SearchBarV {
-    fileprivate func configAddSubview() {
-        searchView.addSubview(searchImageView)
-        searchView.addSubview(searchBarTextFiled)
-        
-        addSubview(searchView)
     }
 }
 
 // MARK: - autoLayout 관련
 extension SearchBarV {
     fileprivate func configLayout() {
-//        searchBarSV.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//            $0.height.equalTo(50)
-//        }
+        searchView.addSubview(searchImageView)
+        searchView.addSubview(searchBarTextFiled)
+        addSubview(searchView)
+        
         searchView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.height.equalTo(50)
@@ -106,13 +92,6 @@ extension SearchBarV: UITextFieldDelegate {
         self.searchBarTextFiled.resignFirstResponder()
         
         return true
-    }
-}
-
-// MARK: - override touchesBegan (키보드 내리기)
-extension SearchBarV {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.searchBarTextFiled.resignFirstResponder()
     }
 }
 

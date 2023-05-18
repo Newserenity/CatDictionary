@@ -42,7 +42,6 @@ final class StarListTVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configAddSubview()
         configLayout()
     }
     
@@ -56,21 +55,17 @@ extension StarListTVCell {
 
 }
 
-// MARK: - addSubview 관련
+
+// MARK: - Autolayout 관련
 extension StarListTVCell {
-    fileprivate func configAddSubview() {
+    fileprivate func configLayout() {
         self.addSubview(imageView)
         self.addSubview(stackView)
         self.addSubview(removeButton)
         stackView.addSubview(dateLabel)
         stackView.addSubview(imageIdLabel)
         stackView.addSubview(seqIdLabel)
-    }
-}
-
-// MARK: - Autolayout 관련
-extension StarListTVCell {
-    fileprivate func configLayout() {
+        
         imageView.snp.makeConstraints {
             $0.size.equalTo(100)
             $0.top.equalToSuperview().offset(10)
