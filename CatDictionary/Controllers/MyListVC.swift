@@ -10,16 +10,17 @@ import Then
 
 class MyListVC: UIViewController {
 
-    fileprivate let myCatList = CatGroupV()
+    fileprivate let myListTV = StarListTV()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         configProperty()
         configLayout()
         configNavbar()
         
-        self.view.backgroundColor = .white
+//        networking()
     }
 }
 
@@ -36,12 +37,12 @@ extension MyListVC {
 // MARK: - autolayout 관련
 extension MyListVC {
     fileprivate func configLayout() {
-        self.view.addSubview(myCatList)
+        self.view.addSubview(myListTV)
         
-        myCatList.snp.makeConstraints {
+        myListTV.snp.makeConstraints {
+            $0.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
             $0.left.equalTo(self.view.safeAreaLayoutGuide).offset(10)
             $0.right.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
-            $0.verticalEdges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
 }

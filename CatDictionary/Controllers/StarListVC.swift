@@ -26,7 +26,7 @@ extension StarListVC {
     fileprivate func networking() {
         NetworkManager.shared.fetchStarList { res in
             self.starListTV.starListArr = res
-            self.starListTV.reloadData()
+//            self.starListTV.reloadData()
         }
     }
 }

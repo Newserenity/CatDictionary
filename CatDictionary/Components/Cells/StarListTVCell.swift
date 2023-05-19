@@ -8,41 +8,40 @@
 import UIKit
 import Then
 
-final class StarListTVCell: UICollectionViewCell {
+final class StarListTVCell: UITableViewCell {
     
-    fileprivate lazy var imageView = UIImageView().then {
+    fileprivate lazy var catImage = UIImageView().then {
         $0.backgroundColor = .systemGray6
+        $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = 10
     }
     
     fileprivate lazy var stackView = UIStackView().then {
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
     }
     
     fileprivate lazy var dateLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 12, weight: .bold)
         $0.textAlignment = .left
         $0.text = "0000/00/00 00:00 MON"
         
     }
     fileprivate lazy var imageIdLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .bold)
         $0.textAlignment = .left
         $0.text = "ABCDEFG"
     }
     fileprivate lazy var seqIdLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .bold)
         $0.textAlignment = .left
         $0.text = "0000000"
     }
     
-    fileprivate lazy var removeButton = UIButton().then {
-        $0.backgroundColor = .brown
-        $0.tintColor = .black
-    }
-
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-//        configLayout()
+        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -59,45 +58,39 @@ extension StarListTVCell {
 // MARK: - Autolayout 관련
 extension StarListTVCell {
     fileprivate func configLayout() {
-        self.addSubview(imageView)
+        self.addSubview(catImage)
         self.addSubview(stackView)
-        self.addSubview(removeButton)
         stackView.addSubview(dateLabel)
         stackView.addSubview(imageIdLabel)
         stackView.addSubview(seqIdLabel)
         
-        imageView.snp.makeConstraints {
-            $0.size.equalTo(100)
-            $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.left.equalToSuperview().offset(10)
+        catImage.snp.makeConstraints {
+            $0.size.equalTo(90)
+            $0.top.left.equalToSuperview().offset(5)
+            $0.bottom.equalToSuperview().inset(5)
         }
         
         stackView.snp.makeConstraints {
-            $0.left.equalTo(imageView.snp.right).offset(10)
+            $0.left.equalTo(catImage.snp.right).offset(5)
             $0.verticalEdges.equalToSuperview()
-            $0.width.equalTo(300)
+            $0.right.equalToSuperview()
         }
         
         seqIdLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(15)
+            $0.top.equalToSuperview().offset(10)
             $0.left.equalToSuperview().offset(15)
         }
         
         dateLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(15)
+            $0.bottom.equalToSuperview().inset(10)
             $0.left.equalToSuperview().offset(15)
         }
         
         imageIdLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.left.equalToSuperview().offset(15)
-        }
-        removeButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().inset(10)
         }
     }
 }
@@ -112,7 +105,7 @@ struct StarListTVCell_Previews: PreviewProvider {
     static var previews: some View {
         StarListTVCell()
             .getPreview()
-            .frame(width: 500, height: 120)
+            .frame(width: 500, height: 100)
             .previewLayout(.sizeThatFits)
         
     }

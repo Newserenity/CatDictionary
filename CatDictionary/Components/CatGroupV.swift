@@ -26,7 +26,6 @@ final class CatGroupV: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .blue
         configProperty()
         configLayout()
     }

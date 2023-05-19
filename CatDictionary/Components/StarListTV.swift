@@ -9,15 +9,18 @@ import UIKit
 import SnapKit
 import Then
 
-final class StarListTV: UITableView {
+final class StarListTV: UIView {
     
-    var starListArr: StarListRes = []
+    var starListArr: StarListRes = [StarListResData(),StarListResData(), StarListResData(), StarListResData(), StarListResData(), StarListResData(), StarListResData(),StarListResData() ,StarListResData() ,StarListResData(), StarListResData(), StarListResData()]
+    fileprivate lazy var tableView = UITableView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: style)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-//        configProperty()
-//        configLayout()
+        configProperty()
+        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +32,10 @@ final class StarListTV: UITableView {
 extension StarListTV {
     // self stored property
     fileprivate func configProperty() {
-        self.dataSource = self
-        self.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
-        self.register(StarListTVCell.self, forCellReuseIdentifier: IDENTIFIER.STAR_LIST_TV_CELL)
+        self.tableView.register(StarListTVCell.self, forCellReuseIdentifier: IDENTIFIER.STAR_LIST_TV_CELL)
     }
 }
 
@@ -41,20 +44,30 @@ extension StarListTV: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return starListArr.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER.STAR_LIST_TV_CELL, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER.STAR_LIST_TV_CELL, for: indexPath) as! StarListTVCell
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            // 삭제 작업 수행
+            completionHandler(true)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
     }
 }
 
 // MARK: - autolayout
 extension StarListTV {
     fileprivate func configLayout() {
-        self.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(120)
+        addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
@@ -69,7 +82,6 @@ struct StarListTV_Previews: PreviewProvider {
     static var previews: some View {
         StarListTV()
             .getPreview()
-            .frame(width: 400, height: 60)
             .previewLayout(.sizeThatFits)
     }
 }
