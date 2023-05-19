@@ -82,7 +82,6 @@ struct StarListTV_Previews: PreviewProvider {
     static var previews: some View {
         StarListTV()
             .getPreview()
-            .previewLayout(.sizeThatFits)
     }
 }
 

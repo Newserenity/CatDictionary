@@ -18,7 +18,10 @@ final class StarListTVCell: UITableViewCell {
     }
     
     fileprivate lazy var stackView = UIStackView().then {
-        $0.backgroundColor = .white
+        $0.axis = .vertical
+        $0.alignment = .leading
+        $0.distribution = .equalSpacing
+        $0.spacing = 5
     }
     
     fileprivate lazy var dateLabel = UILabel().then {
@@ -28,12 +31,12 @@ final class StarListTVCell: UITableViewCell {
         
     }
     fileprivate lazy var imageIdLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15, weight: .bold)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textAlignment = .left
         $0.text = "ABCDEFG"
     }
     fileprivate lazy var seqIdLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15, weight: .bold)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
         $0.textAlignment = .left
         $0.text = "0000000"
     }
@@ -60,9 +63,9 @@ extension StarListTVCell {
     fileprivate func configLayout() {
         self.addSubview(catImage)
         self.addSubview(stackView)
-        stackView.addSubview(dateLabel)
-        stackView.addSubview(imageIdLabel)
-        stackView.addSubview(seqIdLabel)
+        stackView.addArrangedSubview(seqIdLabel)
+        stackView.addArrangedSubview(imageIdLabel)
+        stackView.addArrangedSubview(dateLabel)
         
         catImage.snp.makeConstraints {
             $0.size.equalTo(90)
@@ -72,26 +75,12 @@ extension StarListTVCell {
         
         stackView.snp.makeConstraints {
             $0.left.equalTo(catImage.snp.right).offset(5)
-            $0.verticalEdges.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.right.equalToSuperview().inset(5)
+            $0.verticalEdges.equalToSuperview().inset(10)
         }
         
-        seqIdLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(10)
-            $0.left.equalToSuperview().offset(15)
-        }
-        
-        dateLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(10)
-            $0.left.equalToSuperview().offset(15)
-        }
-        
-        imageIdLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.left.equalToSuperview().offset(15)
-        }
+//        stackView.alignment = .leading // 요소들을 수직으로 정렬합니다.
+//        stackView.distribution = .equalSpacing // 요소들을 세로로 균등한 간격으로 배치합니다.
     }
 }
 
