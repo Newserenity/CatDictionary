@@ -41,6 +41,12 @@ final class StarListTVCell: UITableViewCell {
         $0.text = "0000000"
     }
     
+    fileprivate var imageUrl: String? {
+        didSet {
+            loadImage()
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -54,7 +60,20 @@ final class StarListTVCell: UITableViewCell {
 
 // MARK: - Getter, Setter 모음
 extension StarListTVCell {
+    public func setElement(seq: String, imageId: String, date: String, imageUrl: String) {
+        self.seqIdLabel.text = seq
+        self.imageIdLabel.text = imageId
+        self.dateLabel.text = date
+        self.imageUrl = imageUrl
+    }
+}
 
+// MARK: - Fetching image from url by KF
+extension StarListTVCell {
+    private func loadImage() {
+        guard let urlString = self.imageUrl, let url = URL(string: urlString)  else { return }
+        catImage.kf.setImage(with: url)
+    }
 }
 
 
@@ -74,10 +93,15 @@ extension StarListTVCell {
         }
         
         stackView.snp.makeConstraints {
-            $0.left.equalTo(catImage.snp.right).offset(5)
+            $0.left.equalTo(catImage.snp.right).offset(10)
             $0.right.equalToSuperview().inset(5)
             $0.verticalEdges.equalToSuperview().inset(10)
         }
+        
+        seqIdLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
         
 //        stackView.alignment = .leading // 요소들을 수직으로 정렬합니다.
 //        stackView.distribution = .equalSpacing // 요소들을 세로로 균등한 간격으로 배치합니다.

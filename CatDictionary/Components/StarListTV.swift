@@ -11,7 +11,7 @@ import Then
 
 final class StarListTV: UIView {
     
-    var starListArr: StarListRes = [StarListResData(),StarListResData(), StarListResData(), StarListResData(), StarListResData(), StarListResData(), StarListResData(),StarListResData() ,StarListResData() ,StarListResData(), StarListResData(), StarListResData()]
+    var starListArr: StarListRes = []
     fileprivate lazy var tableView = UITableView().then {
         $0.showsVerticalScrollIndicator = false
     }
@@ -25,6 +25,13 @@ final class StarListTV: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension StarListTV {
+    public func setStarListArr(_ arr: StarListRes) {
+        self.starListArr  = arr
+        self.tableView.reloadData()
     }
 }
 
@@ -47,6 +54,13 @@ extension StarListTV: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER.STAR_LIST_TV_CELL, for: indexPath) as! StarListTVCell
+        
+        let seq = String(starListArr[indexPath.row].id!)
+        let date = starListArr[indexPath.row].date ?? "err"
+        let imageId = starListArr[indexPath.row].image?.imageId ?? "err"
+        let imageUrl = starListArr[indexPath.row].image?.imageUrl ?? "err"
+        
+        cell.setElement(seq: seq, imageId: imageId, date: date, imageUrl: imageUrl)
         
         return cell
     }
@@ -82,6 +96,7 @@ struct StarListTV_Previews: PreviewProvider {
     static var previews: some View {
         StarListTV()
             .getPreview()
+            .previewLayout(.sizeThatFits)
     }
 }
 

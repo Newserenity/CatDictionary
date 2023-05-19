@@ -9,11 +9,13 @@ import Foundation
 
 struct StarListResData: Codable {
     var id: Int?
+    var date: String?
     var image: Image?
 
     private enum CodingKeys: String, CodingKey {
         case id
         case image
+        case date = "created_at"
     }
 }
 

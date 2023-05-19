@@ -25,8 +25,7 @@ class StarListVC: UIViewController {
 extension StarListVC {
     fileprivate func networking() {
         NetworkManager.shared.fetchStarList { res in
-            self.starListTV.starListArr = res
-//            self.starListTV.reloadData()
+            self.starListTV.setStarListArr(res)
         }
     }
 }
