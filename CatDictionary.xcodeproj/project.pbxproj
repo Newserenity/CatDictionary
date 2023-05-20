@@ -43,6 +43,10 @@
 		3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83D2A12607300528983 /* Category+Res.swift */; };
 		3DF0D8402A126F9600528983 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */; };
 		3DF0D8422A14C15F00528983 /* StarList+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D8412A14C15F00528983 /* StarList+Res.swift */; };
+		F29C97622A18B7B100EA6FAD /* RxTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C97612A18B7B100EA6FAD /* RxTestVC.swift */; };
+		F29C97652A18BB2300EA6FAD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97642A18BB2300EA6FAD /* RxCocoa */; };
+		F29C97672A18BB2300EA6FAD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97662A18BB2300EA6FAD /* RxRelay */; };
+		F29C97692A18BB2300EA6FAD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97682A18BB2300EA6FAD /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,7 @@
 		3DF0D83D2A12607300528983 /* Category+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Res.swift"; sourceTree = "<group>"; };
 		3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		3DF0D8412A14C15F00528983 /* StarList+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarList+Res.swift"; sourceTree = "<group>"; };
+		F29C97612A18B7B100EA6FAD /* RxTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTestVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +110,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29C97652A18BB2300EA6FAD /* RxCocoa in Frameworks */,
 				3D983A262A0A35B7000675A1 /* Fakery in Frameworks */,
+				F29C97672A18BB2300EA6FAD /* RxRelay in Frameworks */,
 				3DB768452A07B9BF009AFB08 /* Alamofire in Frameworks */,
 				3DB7683F2A07B928009AFB08 /* Then in Frameworks */,
 				3DB768422A07B94E009AFB08 /* SnapKit in Frameworks */,
+				F29C97692A18BB2300EA6FAD /* RxSwift in Frameworks */,
 				3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +233,7 @@
 				3DB7684B2A07C233009AFB08 /* MyListVC.swift */,
 				3DB768482A07C1E8009AFB08 /* UploadVC.swift */,
 				3DB7684D2A07C248009AFB08 /* StarListVC.swift */,
+				F29C97612A18B7B100EA6FAD /* RxTestVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +290,9 @@
 				3DB768442A07B9BF009AFB08 /* Alamofire */,
 				3D983A252A0A35B7000675A1 /* Fakery */,
 				3DF0D83B2A12551E00528983 /* Kingfisher */,
+				F29C97642A18BB2300EA6FAD /* RxCocoa */,
+				F29C97662A18BB2300EA6FAD /* RxRelay */,
+				F29C97682A18BB2300EA6FAD /* RxSwift */,
 			);
 			productName = CatDictionary;
 			productReference = 3DB767FE2A07B364009AFB08 /* CatDictionary.app */;
@@ -360,6 +372,7 @@
 				3DB768432A07B9BF009AFB08 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */,
 				3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 3DB767FF2A07B364009AFB08 /* Products */;
 			projectDirPath = "";
@@ -410,6 +423,7 @@
 				3D4D8F112A166182000B8877 /* CatGroupV.swift in Sources */,
 				3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */,
 				3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */,
+				F29C97622A18B7B100EA6FAD /* RxTestVC.swift in Sources */,
 				3D26B9412A0D290700EAB059 /* Constant.swift in Sources */,
 				3DB7680C2A07B364009AFB08 /* CatDictionary.xcdatamodeld in Sources */,
 				3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */,
@@ -818,6 +832,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -845,6 +867,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F29C97642A18BB2300EA6FAD /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F29C97662A18BB2300EA6FAD /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		F29C97682A18BB2300EA6FAD /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -20,7 +20,7 @@ final class StarListTVCell: UITableViewCell {
     fileprivate lazy var stackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .leading
-        $0.distribution = .equalSpacing
+        $0.distribution = .fill
         $0.spacing = 5
     }
     
@@ -50,6 +50,7 @@ final class StarListTVCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        
         configLayout()
     }
     
@@ -65,6 +66,7 @@ extension StarListTVCell {
         self.imageIdLabel.text = imageId
         self.dateLabel.text = date
         self.imageUrl = imageUrl
+        self.layoutIfNeeded()
     }
 }
 
@@ -80,6 +82,9 @@ extension StarListTVCell {
 // MARK: - Autolayout 관련
 extension StarListTVCell {
     fileprivate func configLayout() {
+        print(#fileID, #function, #line, "- ")
+        self.selectionStyle = .none
+        
         self.addSubview(catImage)
         self.addSubview(stackView)
         stackView.addArrangedSubview(seqIdLabel)
@@ -88,19 +93,27 @@ extension StarListTVCell {
         
         catImage.snp.makeConstraints {
             $0.size.equalTo(90)
-            $0.top.left.equalToSuperview().offset(5)
+            $0.leading.equalToSuperview().offset(5)
+            $0.top.equalToSuperview().inset(5)
             $0.bottom.equalToSuperview().inset(5)
-        }
-        
-        stackView.snp.makeConstraints {
-            $0.left.equalTo(catImage.snp.right).offset(10)
-            $0.right.equalToSuperview().inset(5)
-            $0.verticalEdges.equalToSuperview().inset(10)
         }
         
         seqIdLabel.snp.makeConstraints {
             $0.height.equalTo(20)
         }
+        imageIdLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.left.equalTo(catImage.snp.right).offset(10)
+            $0.right.equalToSuperview().inset(5)
+            $0.top.equalTo(catImage.snp.top).inset(10)
+            $0.bottom.equalToSuperview().inset(5)
+//            $0.height.equalTo(100)
+        }
+        
+        
         
         
 //        stackView.alignment = .leading // 요소들을 수직으로 정렬합니다.
@@ -114,14 +127,14 @@ extension StarListTVCell {
 
 import SwiftUI
 
-struct StarListTVCell_Previews: PreviewProvider {
-    static var previews: some View {
-        StarListTVCell()
-            .getPreview()
-            .frame(width: 500, height: 100)
-            .previewLayout(.sizeThatFits)
-        
-    }
-}
+//struct StarListTVCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StarListTVCell()
+//            .getPreview()
+//            .frame(width: 500, height: 100)
+//            .previewLayout(.sizeThatFits)
+//
+//    }
+//}
 
 #endif

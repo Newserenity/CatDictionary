@@ -42,16 +42,18 @@ extension StarListTV {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        
         self.tableView.register(StarListTVCell.self, forCellReuseIdentifier: IDENTIFIER.STAR_LIST_TV_CELL)
     }
 }
 
-// MARK: - Deligate
-extension StarListTV: UITableViewDataSource, UITableViewDelegate {
+
+//MARK: - UITableViewDataSource 관련
+extension StarListTV: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return starListArr.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER.STAR_LIST_TV_CELL, for: indexPath) as! StarListTVCell
         
@@ -62,7 +64,26 @@ extension StarListTV: UITableViewDataSource, UITableViewDelegate {
         
         cell.setElement(seq: seq, imageId: imageId, date: date, imageUrl: imageUrl)
         
+        
+        
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension StarListTV: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

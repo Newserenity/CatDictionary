@@ -40,6 +40,36 @@ class ExploreVC: UIViewController {
     }
 }
 
+//MARK: - Helpers
+extension ExploreVC {
+    
+    fileprivate func handleErr(_ err: Error){
+        if let myErr = err as? NetworkManager.MyError {
+            switch myErr {
+            case .decode:
+                print(#fileID, #function, #line, "- ")
+            case .noContent:
+                print(#fileID, #function, #line, "- ")
+            case .notAllowedStatusCode(let statusCode):
+                print(#fileID, #function, #line, "- statusCode: \(statusCode)")
+            case .unknown(let err):
+                showErrorAlert(err: err)
+            }
+        }
+    }
+    
+    fileprivate func showErrorAlert(err: Error){
+        
+        let errMsg = err.localizedDescription
+        
+        let alert = UIAlertController(title: "안내", message: errMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("확인", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
 // MARK: - Setting Self
 extension ExploreVC {
     // self stored property
@@ -52,14 +82,36 @@ extension ExploreVC {
 extension ExploreVC {
     fileprivate func initNetworking() {
         // fetching main catlist
-        NetworkManager.shared.fetchMainCatList { res in
-            self.myCatList.setCatsArr(res)
+        
+        NetworkManager.shared.fetchMainCatList { result in
+            switch result {
+            case .success(let res):
+                // 성공적인 응답 처리
+//                print("Main Cat List 요청 성공: \(res)")
+                self.myCatList.setCatsArr(res)
+            case .failure(let error):
+                // 에러 처리
+                print("네트워크 요청 에러: \(error)")
+                // 에러 핸들링 로직 추가
+            }
         }
         
         // fetching categoty menu
-        NetworkManager.shared.fetchCategoty { res in
+//        NetworkManager.shared.fetchCategoty { res in
+//            self.badgeBar.setCategoryArr(res)
+//        }
+        
+        NetworkManager.shared.fetchCategoty(completion: { [weak self] res, err in
+            guard let self = self else { return }
+            if let err = err  {
+                print(#fileID, #function, #line, "- 에러발생 : \(err)")
+                self.handleErr(err)
+                return
+            }
+            guard let res = res else { return }
             self.badgeBar.setCategoryArr(res)
-        }
+        })
+        
     }
 }
 

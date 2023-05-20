@@ -45,10 +45,21 @@ final class CatGroupV: UIView {
 extension CatGroupV {
     @objc fileprivate func handleRefreshControl() {
        // Update your content…
-        NetworkManager.shared.fetchMainCatList { res in
-            self.catsArr = res
-            self.collectionView.reloadData()
+        NetworkManager.shared.fetchMainCatList { result in
+            switch result {
+            case .success(let res):
+                // 성공적인 응답 처리
+//                print("Main Cat List 요청 성공: \(res)")
+                self.catsArr = res
+                self.collectionView.reloadData()
+            case .failure(let error):
+                // 에러 처리
+                print("네트워크 요청 에러: \(error)")
+                // 에러 핸들링 로직 추가
+            }
         }
+        
+        
 
        // Dismiss the refresh control.
        DispatchQueue.main.async {

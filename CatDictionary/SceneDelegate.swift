@@ -27,19 +27,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myListVC = UINavigationController(rootViewController: MyListVC())
         let starListVC = UINavigationController(rootViewController: StarListVC())
         
+        let rxTestVC = UINavigationController(rootViewController: RxTestVC())
+        
         // 탭바 이름들 설정
         exploreVC.title = "Main"
         uploadVC.title = "Upload"
         myListVC.title = "MyList"
         starListVC.title = "Star"
+        rxTestVC.title = "RxTest"
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
         tabBarC.setViewControllers([
             exploreVC,
             uploadVC,
             myListVC,
-            starListVC
+            starListVC,
+            rxTestVC
         ], animated: false)
+        
+        tabBarC.selectedIndex = 4
+        
         tabBarC.modalPresentationStyle = .fullScreen
         tabBarC.tabBar.backgroundColor = .white
         tabBarC.tabBar.tintColor = .systemTeal
@@ -52,6 +59,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         items[1].image = UIImage(systemName: "camera.fill")
         items[2].image = UIImage(systemName: "checklist.unchecked")
         items[3].image = UIImage(systemName: "star.fill")
+        
+        items[4].image = UIImage(systemName: "star")
         
         // 기본루트뷰를 탭바컨트롤러로 설정
         window?.rootViewController = tabBarC
