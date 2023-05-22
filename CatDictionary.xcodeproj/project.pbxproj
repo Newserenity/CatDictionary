@@ -15,6 +15,7 @@
 		3D26B94F2A0F706000EAB059 /* CatExplore+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26B94E2A0F706000EAB059 /* CatExplore+Res.swift */; };
 		3D4D8F112A166182000B8877 /* CatGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D8F102A166182000B8877 /* CatGroupV.swift */; };
 		3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D759CFC2A0B4F180031829F /* UIViewDashedBorder+Ext.swift */; };
+		3D9132DD2A19900500B8C535 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D9132DC2A19900500B8C535 /* RxAlamofire */; };
 		3D983A262A0A35B7000675A1 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 3D983A252A0A35B7000675A1 /* Fakery */; };
 		3D983A282A0A3D1F000675A1 /* BadgeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A272A0A3D1F000675A1 /* BadgeTVCell.swift */; };
 		3D983A2A2A0A4118000675A1 /* BadgeGroupV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D983A292A0A4118000675A1 /* BadgeGroupV.swift */; };
@@ -116,6 +117,7 @@
 				3DB768452A07B9BF009AFB08 /* Alamofire in Frameworks */,
 				3DB7683F2A07B928009AFB08 /* Then in Frameworks */,
 				3DB768422A07B94E009AFB08 /* SnapKit in Frameworks */,
+				3D9132DD2A19900500B8C535 /* RxAlamofire in Frameworks */,
 				F29C97692A18BB2300EA6FAD /* RxSwift in Frameworks */,
 				3DF0D83C2A12551E00528983 /* Kingfisher in Frameworks */,
 			);
@@ -293,6 +295,7 @@
 				F29C97642A18BB2300EA6FAD /* RxCocoa */,
 				F29C97662A18BB2300EA6FAD /* RxRelay */,
 				F29C97682A18BB2300EA6FAD /* RxSwift */,
+				3D9132DC2A19900500B8C535 /* RxAlamofire */,
 			);
 			productName = CatDictionary;
 			productReference = 3DB767FE2A07B364009AFB08 /* CatDictionary.app */;
@@ -373,6 +376,7 @@
 				3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */,
 				3DF0D83A2A12551E00528983 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F29C97632A18BB2300EA6FAD /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3D9132DB2A19900500B8C535 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 			);
 			productRefGroup = 3DB767FF2A07B364009AFB08 /* Products */;
 			projectDirPath = "";
@@ -792,6 +796,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3D9132DB2A19900500B8C535 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vadymmarkov/Fakery";
@@ -837,12 +849,17 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 6.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3D9132DC2A19900500B8C535 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D9132DB2A19900500B8C535 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
 		3D983A252A0A35B7000675A1 /* Fakery */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D983A242A0A35B7000675A1 /* XCRemoteSwiftPackageReference "Fakery" */;

@@ -28,12 +28,30 @@
       }
     },
     {
+      "identity" : "ohhttpstubs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/OHHTTPStubs.git",
+      "state" : {
+        "revision" : "12f19662426d0434d6c330c6974d53e2eb10ecd9",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "rxalamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxAlamofire.git",
+      "state" : {
+        "revision" : "9535b58695b91fb67f56d58d6fd0c76462d7743a",
+        "version" : "6.1.2"
+      }
+    },
+    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
-        "revision" : "9dcaa4b333db437b0fbfaf453fad29069044a8b4",
-        "version" : "6.6.0"
+        "revision" : "7e01c05f25c025143073eaa3be3532f9375c614b",
+        "version" : "6.1.0"
       }
     },
     {
