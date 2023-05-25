@@ -44,7 +44,6 @@
 		3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83D2A12607300528983 /* Category+Res.swift */; };
 		3DF0D8402A126F9600528983 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */; };
 		3DF0D8422A14C15F00528983 /* StarList+Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF0D8412A14C15F00528983 /* StarList+Res.swift */; };
-		F29C97622A18B7B100EA6FAD /* RxTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C97612A18B7B100EA6FAD /* RxTestVC.swift */; };
 		F29C97652A18BB2300EA6FAD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97642A18BB2300EA6FAD /* RxCocoa */; };
 		F29C97672A18BB2300EA6FAD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97662A18BB2300EA6FAD /* RxRelay */; };
 		F29C97692A18BB2300EA6FAD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F29C97682A18BB2300EA6FAD /* RxSwift */; };
@@ -103,7 +102,6 @@
 		3DF0D83D2A12607300528983 /* Category+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Res.swift"; sourceTree = "<group>"; };
 		3DF0D83F2A126F9600528983 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		3DF0D8412A14C15F00528983 /* StarList+Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarList+Res.swift"; sourceTree = "<group>"; };
-		F29C97612A18B7B100EA6FAD /* RxTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTestVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +233,6 @@
 				3DB7684B2A07C233009AFB08 /* MyListVC.swift */,
 				3DB768482A07C1E8009AFB08 /* UploadVC.swift */,
 				3DB7684D2A07C248009AFB08 /* StarListVC.swift */,
-				F29C97612A18B7B100EA6FAD /* RxTestVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -427,7 +424,6 @@
 				3D4D8F112A166182000B8877 /* CatGroupV.swift in Sources */,
 				3DF0D83E2A12607300528983 /* Category+Res.swift in Sources */,
 				3D759CFD2A0B4F180031829F /* UIViewDashedBorder+Ext.swift in Sources */,
-				F29C97622A18B7B100EA6FAD /* RxTestVC.swift in Sources */,
 				3D26B9412A0D290700EAB059 /* Constant.swift in Sources */,
 				3DB7680C2A07B364009AFB08 /* CatDictionary.xcdatamodeld in Sources */,
 				3DB7684E2A07C248009AFB08 /* StarListVC.swift in Sources */,
