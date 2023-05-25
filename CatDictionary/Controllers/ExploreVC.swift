@@ -25,6 +25,8 @@ class ExploreVC: UIViewController {
         configNavbar() // This Func come from  "~/extentions/UIVC+EXT"
         
         initNetworking()
+        
+        showErrorAlert(err: NetworkManager.NetworkErr.notAllowedStatusCode(statusCode: 404))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,12 +46,8 @@ class ExploreVC: UIViewController {
 extension ExploreVC {
     
     fileprivate func handleErr(_ err: Error){
-        if let myErr = err as? NetworkManager.MyError {
-            switch myErr {
-            case .decode:
-                print(#fileID, #function, #line, "- ")
-            case .noContent:
-                print(#fileID, #function, #line, "- ")
+        if let safeErr = err as? NetworkManager.NetworkErr {
+            switch safeErr {
             case .notAllowedStatusCode(let statusCode):
                 print(#fileID, #function, #line, "- statusCode: \(statusCode)")
             case .unknown(let err):
@@ -60,10 +58,10 @@ extension ExploreVC {
     
     fileprivate func showErrorAlert(err: Error){
         
-        let errMsg = err.localizedDescription
+        let errMsg = err as? NetworkManager.NetworkErr
         
-        let alert = UIAlertController(title: "안내", message: errMsg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("확인", comment: "Default action"), style: .default, handler: { _ in
+        let alert = UIAlertController(title: "안내", message: errMsg?.info, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Networking Err", comment: "Default action"), style: .default, handler: { _ in
         NSLog("The \"OK\" alert occured.")
         }))
         self.present(alert, animated: true, completion: nil)
@@ -83,16 +81,13 @@ extension ExploreVC {
     fileprivate func initNetworking() {
         // fetching main catlist
         
-        NetworkManager.shared.fetchMainCatList { result in
-            switch result {
-            case .success(let res):
-                // 성공적인 응답 처리
-//                print("Main Cat List 요청 성공: \(res)")
-                self.myCatList.setCatsArr(res)
-            case .failure(let error):
-                // 에러 처리
-                print("네트워크 요청 에러: \(error)")
-                // 에러 핸들링 로직 추가
+        NetworkManager.shared.fetchMainCatList { res, err in
+            if let safeRes = res {
+                self.myCatList.setCatsArr(safeRes)
+            }
+            
+            if let safeErr = err {
+                print(#fileID, #function, #line, "- \(safeErr)")
             }
         }
         

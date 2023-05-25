@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             rxTestVC
         ], animated: false)
         
-        tabBarC.selectedIndex = 4
+        tabBarC.selectedIndex = 0
         
         tabBarC.modalPresentationStyle = .fullScreen
         tabBarC.tabBar.backgroundColor = .white

@@ -44,18 +44,17 @@ final class CatGroupV: UIView {
 // MARK: - event handler
 extension CatGroupV {
     @objc fileprivate func handleRefreshControl() {
+        
        // Update your content…
-        NetworkManager.shared.fetchMainCatList { result in
-            switch result {
-            case .success(let res):
-                // 성공적인 응답 처리
-//                print("Main Cat List 요청 성공: \(res)")
-                self.catsArr = res
+        NetworkManager.shared.fetchMainCatList { res, err in
+            
+            if let safeRes = res {
+                self.catsArr = safeRes
                 self.collectionView.reloadData()
-            case .failure(let error):
-                // 에러 처리
-                print("네트워크 요청 에러: \(error)")
-                // 에러 핸들링 로직 추가
+            }
+            
+            if let safeErr = err {
+                print(#fileID, #function, #line, "- \(safeErr)")
             }
         }
         

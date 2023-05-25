@@ -24,8 +24,14 @@ class StarListVC: UIViewController {
 
 extension StarListVC {
     fileprivate func networking() {
-        NetworkManager.shared.fetchStarList { res in
-            self.starListTV.setStarListArr(res)
+        NetworkManager.shared.fetchStarList { res, err in
+            if let safeErr = err {
+                print(safeErr.localizedDescription)
+            }
+
+            if let safeRes = res {
+                self.starListTV.setStarListArr(safeRes)
+            }
         }
     }
 }

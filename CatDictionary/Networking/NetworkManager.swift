@@ -11,9 +11,7 @@ import Alamofire
 //MARK: - Networking
 final class NetworkManager {
 
-    enum MyError : Error {
-        case noContent
-        case decode
+    enum NetworkErr : Error {
         case notAllowedStatusCode(statusCode: Int)
         case unknown(err : Error)
         
@@ -35,89 +33,70 @@ final class NetworkManager {
         session = Session(interceptor: interceptors)
     }
     
-    func fetchMainCatList(completion: @escaping (Result<CatExploreRes, Error>) -> Void) {
-        session.request(Router.search(limit: 21)).responseDecodable(of: CatExploreRes.self) { response in
-            switch response.result {
-            case .success(let value):
-                // 성공적인 응답 처리
-                completion(.success(value))
-            case .failure(let error):
-                // 에러 처리
-                completion(.failure(error))
-            }
+    func fetchMainCatList(completion: @escaping (_ : CatExploreRes?, Error?) -> Void) {
+        session.request(Router.search(limit: 21))
+            .responseDecodable(of: CatExploreRes.self) { res in
+                
+                // 상태코드가 200이 아닐경우 에러처리
+                guard res.response?.statusCode == 200 else {
+                    completion(nil, NetworkErr.notAllowedStatusCode(statusCode: res.response?.statusCode ?? 00))
+                    return
+                }
+                switch res.result {
+                case .success(let value):
+                    // 성공적인 응답 처리
+                    completion(value, nil)
+                case .failure(let error):
+                    // 에러 처리
+                    let err = NetworkErr.unknown(err: error)
+                    completion(nil, err)
+                }
         }
     }
     
-    // ******
-    // USAGE of "fetchMainCatList"
-    // ******
-//    fetchMainCatList { result in
-//        switch result {
-//        case .success(let catExploreRes):
-//            // 성공적인 응답 처리
-//            print("Main Cat List 요청 성공: \(catExploreRes)")
-//        case .failure(let error):
-//            // 에러 처리
-//            print("네트워크 요청 에러: \(error)")
-//            // 에러 핸들링 로직 추가
-//        }
-//    }
-
-    
-    func fetchCategoty(completion: @escaping (_ : CategoryRes?, Error?)->Void) {
+    func fetchCategoty(completion: @escaping (_ : CategoryRes?, Error?) -> Void) {
         session.request(Router.category)
             .responseDecodable(of: CategoryRes.self) { res in
-                
+            
+                // 상태코드가 200이 아닐경우 에러처리
                 guard res.response?.statusCode == 200 else {
-                    completion(nil, MyError.notAllowedStatusCode(statusCode: res.response?.statusCode ?? 00))
+                    completion(nil, NetworkErr.notAllowedStatusCode(statusCode: res.response?.statusCode ?? 00))
                     return
                 }
                 
-            switch res.result {
-            case .success(let value):
-                // 성공적인 응답 처리
-                completion(value, nil)
-            case .failure(let error):
-                // 에러 처리
-                print("네트워크 요청 에러: \(error)")
-                
-                let myErr = MyError.unknown(err: error)
-                
-                completion(nil, myErr)
-                // 에러 핸들링 로직 추가
-            }
-        }
-    }
-    func fetchCategoty2(completion: @escaping (_ : CategoryRes?) -> Void) {
-        session.request(Router.category)
-            .responseDecodable(of: CategoryRes.self) { res in
-                
-                
-                
-            switch res.result {
-            case .success(let value):
-                // 성공적인 응답 처리
-                completion(value)
-            case .failure(let error):
-                // 에러 처리
-                print("네트워크 요청 에러: \(error)")
-                completion(nil)
-                // 에러 핸들링 로직 추가
-            }
+                // Result 분기처리
+                switch res.result {
+                case .success(let value):
+                    // 성공적인 응답 처리
+                    completion(value, nil)
+                case .failure(let error):
+                    // 에러 처리
+                    let err = NetworkErr.unknown(err: error)
+                    completion(nil, err)
+                }
         }
     }
     
-    func fetchStarList(completion: @escaping (_ : StarListRes)->Void) {
-        session.request(Router.starList).responseDecodable(of: StarListRes.self) { res in
-            switch res.result {
-            case .success(let value):
-                // 성공적인 응답 처리
-                completion(value)
-            case .failure(let error):
-                // 에러 처리
-                print("네트워크 요청 에러: \(error)")
-                // 에러 핸들링 로직 추가
-            }
+    func fetchStarList(completion: @escaping (_ : StarListRes?, Error?) -> Void) {
+        session.request(Router.starList)
+            .responseDecodable(of: StarListRes.self) { res in
+                
+                // 상태코드가 200이 아닐경우 에러처리
+                guard res.response?.statusCode == 200 else {
+                    completion(nil, NetworkErr.notAllowedStatusCode(statusCode: res.response?.statusCode ?? 00))
+                    return
+                }
+                
+                // Result 분기처리
+                switch res.result {
+                case .success(let value):
+                    // 성공적인 응답 처리
+                    completion(value, nil)
+                case .failure(let error):
+                    // 에러 처리
+                    let err = NetworkErr.unknown(err: error)
+                    completion(nil, err)
+                }
         }
     }
 }
